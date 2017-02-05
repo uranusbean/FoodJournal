@@ -1,0 +1,22 @@
+.content-block-title {
+  margin-top: 0;
+}
+
+.user-feed-icon, .location-feed-icon {
+  vertical-align: middle;
+}
+
+#myCamera {
+  width: 100% !important;
+  height: 190px !important;
+  font-size: 1em !important;
+}
+
+.saveBtn {
+  margin-right: 20px;
+}
+
+/*video#gum {
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+}*/

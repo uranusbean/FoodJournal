@@ -1,0 +1,39 @@
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<!-- Page, data-page contains page name-->
+<div data-page="addvideo" class="page">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
+      <div class="left sliding">
+        <a href="#" class="back link text-navbar"><i class="material-icons">arrow_back</i></a>
+      </div>
+      <!--<div class="center sliding">Food Journal</div>-->
+      <div class="right saveBtn">Save</div>
+    </div>
+  </div>
+
+  <!-- Scrollable page content-->
+  <div class="page-content">
+    <div class="content-block">
+      <div class="content-block-inner">
+        <div id="container">
+
+          <div id="prompt">How is the food?</div>
+          <video id="gum" autoplay muted></video>
+          <video id="recorded" autoplay loop></video>
+
+          <div>
+            <button id="record" disabled>Start Recording</button>
+            <button id="play" disabled>Play</button>
+            <button id="download" disabled>Download</button>
+            <button id="goFS">Go Fullscreen</button>
+            <button id="flip-button">Flip Camera</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
