@@ -10,20 +10,174 @@
         <a href="#" class="back link text-navbar"><i class="material-icons">arrow_back</i></a>
       </div>
       <!--<div class="center sliding">Food Journal</div>-->
-      <div class="right saveBtn">Save</div>
+      <div class="right nextBtn">
+        <a href="textfeed_plate.html" class="link form-to-data">Next</a>
+      </div>
     </div>
   </div>
 
   <!-- Scrollable page content-->
   <div class="page-content">
-    <div class="content-block">
-      <div class="content-block-inner">
-        <p>Text feed!</p>
-        <p>Go <a href="#" class="back">back</a> or click  <a href="#" class="create-page">here </a>to create dynamic page.</p>
-        <p>How is the atmosphere? (music, lightening, etc.)</p>
-        <p>How is the food?</p>
-        <p>How are you feeling about your eating?</p>
+    <!-- <div class="content-block"> -->
+      <!-- <div class="content-block-inner"> -->
+
+    <form id="my-form" class="list-block">
+      <ul>
+        <!-- Text inputs -->
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="material-icons">location_on</i></div>
+            <div class="item-inner">
+              <!-- <div class="item-title label">Where are you eating?</div> -->
+              <div class="item-input">
+                <input type="text"  name="location" placeholder="Add Location">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content">
+            <div class="item-media"><i class="material-icons">person_add</i></div>
+            <div class="item-inner">
+              <!-- <div class="item-title label">Who are you dining with?</div> -->
+              <div class="item-input">
+                <input type="text" name="withWhom" placeholder="With Whom">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+  </form>
+
+  <!-- tags -->
+  <div class="content-block-title">How is your meal? (size, appearance, flavour, texture)?</div>
+  <div class="content-block">
+    <div class="chip-size">
+      <div class="chip">
+        <!-- <div class="chip-media bg-gray"><i class="material-icons">add</i></div> -->
+        <div class="chip-label">small size</div>
+        <!-- <a href="#" class="chip-delete"></a> -->
+      </div>
+      <div class="chip">
+        <div class="chip-label">medium size</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">large size</div>
       </div>
     </div>
+
+    <div class="chip-flavor">
+      <div class="chip">
+        <div class="chip-label">sour</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">bitter</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">sweet</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">salty</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">spicy</div>
+      </div>
+    </div>
+
+    <div class="chip-texture">
+      <div class="chip">
+        <div class="chip-label">crispy</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">crunchy</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">greasy</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">silky</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">creamy</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">lumpy</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">sticky</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label addNewTag"> + add a tag </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="content-block-title">How is your eating environment? (setting, service) </div>
+  <div class="content-block">
+    <div class="chip">
+      <div class="chip-label">eat at home</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">dine out</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">fast food</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">eat on the go</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">holiday eating</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">social eating</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">light music</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">great service</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label addNewTag"> + add a tag </div>
+    </div>
+  </div>
+
+  <div class="content-block-title">How are you feeling about your eating?</div>
+  <div class="content-block">
+    <div class="chip">
+      <div class="chip-label">relaxed</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">happy</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">positive</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">boredom</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">stressed</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">uncomfortable</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label">negative</div>
+    </div>
+    <div class="chip">
+      <div class="chip-label addNewTag"> + add a tag </div>
+    </div>
+  </div>
+<!--
+  <div class="content-block">
+    <a href="#" class="button form-to-data">Get Form Data</a>
+  </div> -->
+
+  <!-- <p>Go <a href="#" class="back">back</a> or click  <a href="#" class="create-page">here </a>to create dynamic page.</p> -->
+  <!-- </div> -->
+<!-- </div> -->
   </div>
 </div>

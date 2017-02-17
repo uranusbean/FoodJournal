@@ -165,14 +165,28 @@ function prepareRecording() {
       window.URL.revokeObjectURL(url);
     }, 100);
   }
+  //---------------------------CHANGE PROMPT- ----------------------------------
+  var texts = ["How is your meal? (appearance, flavour, texture, etc.)?",
+               "How is your eating environment? (setting, temperature, music, lighting, service, etc.)?",
+               "How are you feeling about your eating?"];
+  var count = 0;
+  function changeText() {
+      $("#prompt").text(texts[count]);
+      count < 3 ? count++ : count = 0;
+  }
+  setInterval(changeText, 5000);
 
 
-  var goFS = document.getElementById("goFS");
-  goFS.addEventListener("click", function() {
-      var videoElement = document.getElementById("gum");
-      videoElement.webkitRequestFullscreen();
-  }, false);
 
+  //---------------------------GO FULL SCREEN ----------------------------------
+  // var goFS = document.getElementById("goFS");
+  // goFS.addEventListener("click", function() {
+  //     var videoElement = document.getElementById("gum");
+  //     videoElement.webkitRequestFullscreen();
+  // }, false);
+
+
+  //---------------------------COUNT DOWN --- ----------------------------------
   // var promptButton = document.getElementById("prompt");
   // var counter = 3;
   // var newElement = document.createElement("p");

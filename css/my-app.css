@@ -6,17 +6,83 @@
   vertical-align: middle;
 }
 
+/*------------video section -----------*/
 #myCamera {
   width: 100% !important;
   height: 190px !important;
   font-size: 1em !important;
 }
 
-.saveBtn {
+.nextBtn, .saveBtn {
   margin-right: 20px;
 }
 
-/*video#gum {
+video#gum {
   transform: rotateY(180deg);
   -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-}*/
+}
+
+#prompt {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+/*------------textfeed section -----------*/
+.list-block {
+  margin-top: 0 !important;
+}
+
+.chip:active-state {
+  color:blue;
+}
+
+.tagSelected {
+  background-color: #4caf50;
+}
+
+.addNewTag {
+  color: #9e9e9e;
+}
+/*------------textfeed_plate section -----------*/
+.plateQ {
+  text-align: center;
+}
+
+#quarter_pies text {
+  fill: black;
+  stroke: none;
+}
+
+.foodPortion {
+  stroke: white;
+  stroke-width: 5;
+  fill-opacity: 0;
+}
+
+.largePortion {
+  fill-opacity: 0.2;
+}
+
+.grainPortion {
+  fill: #a68461;
+}
+.vegePortion {
+  fill: #3ab54a;
+}
+.fruitsPortion {
+  fill: #b50a37;
+}
+.proteinPortion {
+  fill: #e87d1d;
+}
+
+.privatePostOption {
+  text-align: right;
+  margin-top: 15%;
+  margin-right: 5%;
+}
+
+/*------------timeline section -----------*/
+.newestPostMonth {
+  font-size: 0.8em;
+}
