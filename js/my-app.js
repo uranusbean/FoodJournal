@@ -30,6 +30,17 @@ myApp.onPageInit('about', function (page) {
 myApp.onPageInit('textfeed', function(page) {
   $$('.chip').on('click', function(e){
     let content = $$(this).find('.chip-label').text();
+    let minorClass = $$(this).parent().attr('class');
+    let majorClass = "";
+
+    // Get the major class of the chip
+    let majorClassDomClass = $$(this).parent().parent().attr('class');
+    let majorClassDomSplittedClasses = majorClassDomClass.split(' ');
+    for (let i = 0; i < majorClassDomSplittedClasses.length; i++) {
+      if (majorClassDomSplittedClasses[i].startsWith('chip-')) {
+        majorClass = majorClassDomSplittedClasses[i];
+      }
+    }
 
     if (!tagSelected[content]) {
       let deleteBtn = $$('<a href="#" class="chip-delete"></a>')
@@ -40,13 +51,17 @@ myApp.onPageInit('textfeed', function(page) {
           // chip.remove();
           chip.removeClass('tagSelected');
           $$(this).remove();
-          tagSelected[content] = false;
+          delete tagSelected[content];
         });
 
       $$(this).addClass('tagSelected')
         .append(deleteBtn);
 
-      tagSelected[content] = true;
+      tagSelected[content] = {
+        chip: content,
+        majorClass: majorClass,
+        minorClass: minorClass
+      };
     }
   console.log(tagSelected);
   });
