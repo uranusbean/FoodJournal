@@ -5,14 +5,9 @@ var myApp = new Framework7({
 
 // Export selectors engine
 var $$ = Dom7;
-var tagSelected = {};
-var formData;
-var today =  new Date(),
-    year = today.getFullYear();
-    month = today.getMonth() + 1;
-    day = today.getDate(),
-    // time = today.getHours() + ":" + today.getMinutes();
-    time = today.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true }); //time format to am/pm
+
+let timelineItem;
+
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
@@ -27,7 +22,18 @@ myApp.onPageInit('about', function (page) {
     });
 });
 
+function newTimelineItem() {
+  return {
+    location: "",
+    withWhom: "",
+    time: new Date(Date.now()),
+    chips: {}
+  };
+}
+
 myApp.onPageInit('textfeed', function(page) {
+  timelineItem = newTimelineItem();
+
   $$('.chip').on('click', function(e){
     let content = $$(this).find('.chip-label').text();
     let minorClass = $$(this).parent().attr('class');
@@ -42,7 +48,7 @@ myApp.onPageInit('textfeed', function(page) {
       }
     }
 
-    if (!tagSelected[content]) {
+    if (!timelineItem.chips[content]) {
       let deleteBtn = $$('<a href="#" class="chip-delete"></a>')
         .on('click', function (e) {
           e.preventDefault();
@@ -51,25 +57,24 @@ myApp.onPageInit('textfeed', function(page) {
           // chip.remove();
           chip.removeClass('tagSelected');
           $$(this).remove();
-          delete tagSelected[content];
+          delete timelineItem.chips[content];
         });
 
       $$(this).addClass('tagSelected')
         .append(deleteBtn);
 
-      tagSelected[content] = {
+      timelineItem.chips[content] = {
         chip: content,
         majorClass: majorClass,
         minorClass: minorClass
       };
     }
-  console.log(tagSelected);
   });
 
   $$('.form-to-data').on('click', function(){
-    formData = myApp.formToData('#my-form');
-    // console.log(formData);
-    // alert(JSON.stringify(formData));
+    let formData = myApp.formToData('#my-form');
+    timelineItem.location = formData.location;
+    timelineItem.withWhom = formData.withWhom;
   });
 });
 
@@ -134,18 +139,93 @@ myApp.onPageInit('textfeed_plate', function(page) {
       $$('#proteinLargePortion').css('fill-opacity', '0.1');
     }
   });
+
+  $$('.postBtn').on('click', function() {
+    let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
+    if (!feeds) {
+      feeds = [];
+    }
+
+    feeds.unshift(timelineItem);
+    timelineItem = null;
+
+    localStorage.setItem('foodJournalFeed', JSON.stringify(feeds));
+  })
 });
 
 myApp.onPageInit('addvideo', function(page) {
   prepareRecording();
-})
+});
+
+function insertTimelineItemDom(canvas, month, day) {
+  let monthNames = [
+    "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+    "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+  ];
+
+  return canvas.append($$(
+    '<div class="timeline-item">' +
+      '<div class="timeline-item-date">' +
+        '<span class="newestPostDay">' + day + '</span>' +
+        '<span class="newestPostMonth">' + monthNames[month] + '</span>' +
+      '</div>' +
+      '<div class="timeline-item-divider"></div>' +
+      '<div class="timeline-item-content">' +
+      '</div>' +
+    '</div>'
+  ));
+}
+
+function insertFeedCard(canvas, feed) {
+  let dom = $$(
+    '<div class = "timeline-item-inner">' +
+      JSON.stringify(feed) +
+    '</div>'
+  );
+
+  canvas.append(dom);
+}
 
 myApp.onPageInit('timeline', function(page) {
-  $$('.newestPostDay').html(day);
-  $$('.newestPostTime').html(time);
-  var generatedFeed = 'I ate at ' + formData.location + ' with ' + formData.withWhom +
-      '. The meal is ' + Object.keys(tagSelected);
-  $$('#timelineEntry').html(generatedFeed);
+  let canvas = $$('.timeline');
+  let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
+
+  if (!feeds || feeds.length == 0) {
+    canvas.html("No feed available.");
+    return;
+  }
+
+  // Newest first
+  feeds.sort(function(a, b) {
+    return a.time - b.time;
+  })
+
+  let currDay = -1;
+  let currMonth = -1;
+  let currYear = -1;
+  let timelineDayContainer;
+  for (let i = 0; i < Math.min(30, feeds.length); i++) {
+    let feed = feeds[i];
+    let time = new Date(feed.time);
+    console.log(feed);
+    if (time.getDate() != currDay ||
+        time.getMonth() != currMonth ||
+        time.getFullYear() != currYear) {
+      currDay = time.getDate();
+      currMonth = time.getMonth();
+      currYear = time.getFullYear();
+      let timelineItemDom = insertTimelineItemDom(canvas, currMonth, currDay);
+      timelineDayContainer = timelineItemDom.find('.timeline-item-content');
+    }
+
+    insertFeedCard(timelineDayContainer, feed);
+  }
+
+  // $$('.newestPostDay').html(day);
+  // $$('.newestPostTime').html(time);
+  // var generatedFeed = 'I ate at ' + formData.location + ' with ' + formData.withWhom +
+  //     '. The meal is ' + Object.keys(tagSelected);
+  // $$('#timelineEntry').html(generatedFeed);
 })
 
 // Generate dynamic page
