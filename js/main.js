@@ -166,15 +166,28 @@ function prepareRecording() {
     }, 100);
   }
   //---------------------------CHANGE PROMPT- ----------------------------------
-  var texts = ["How is your meal? (appearance, flavour, texture, etc.)?",
-               "How is your eating environment? (setting, temperature, music, lighting, service, etc.)?",
-               "How are you feeling about your eating?"];
-  var count = 0;
-  function changeText() {
-      $("#prompt").text(texts[count]);
-      count < 3 ? count++ : count = 0;
-  }
-  setInterval(changeText, 5000);
+  // var prompts = ["How is your meal? (size, appearance, flavour, texture)?",
+  //              "How is your eating environment? (setting, temperature, music, lighting, service)?",
+  //              "How are you feeling about your eating?"];
+  // var count = 0;
+  // function changeText() {
+  //     $("#prompt").text(prompts[count]);
+  //     count < 3 ? count++ : count = 0;
+  // }
+  // setInterval(changeText, 5000);
+
+(function() {
+    var prompts = $(".prompts");
+    var promptIndex = -1;
+    function showNextPrompt() {
+        ++promptIndex;
+        prompts.eq(promptIndex % prompts.length)
+            .fadeIn(3000)
+            .delay(1000)
+            .fadeOut(3000, showNextPrompt);
+    }
+    showNextPrompt();
+})();
 
 
 

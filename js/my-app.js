@@ -80,6 +80,7 @@ myApp.onPageInit('textfeed', function(page) {
 
 myApp.onPageInit('textfeed_plate', function(page) {
   var count = 0;
+
   $$('.grainPortion').on('click',function(){
     count = (count + 1) % 4;
     if (count == 1) {
@@ -140,6 +141,11 @@ myApp.onPageInit('textfeed_plate', function(page) {
     }
   });
 
+  $$('#quarter_pies').on('click',function(){
+    // $$('#plateDirection').css('opacity',0);
+    $$('#healthyPlateAdvice').css('opacity',1);
+  });
+
   $$('.postBtn').on('click', function() {
     let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
     if (!feeds) {
@@ -179,8 +185,10 @@ function insertTimelineItemDom(canvas, month, day) {
 function insertFeedCard(canvas, feed) {
   let dom = $$(
     '<div class = "timeline-item-inner">' +
-      JSON.stringify(feed) +
-    '</div>'
+    '<div class="timeline-item-time newestPostTime">' +
+        new Date(feed.time).getHours() + ':' + new Date(feed.time).getMinutes() +
+    '</div>' +
+    'I had my meal at ' + feed.location + ' with ' + feed.withWhom + '</div>'
   );
 
   canvas.append(dom);
