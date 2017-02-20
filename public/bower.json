@@ -1,0 +1,22 @@
+{
+  "name": "FoodJournal",
+  "homepage": "https://github.com/uranusbean/FoodJournal",
+  "authors": [
+    "Yixuan Zhang <janicezhang.me@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "GPLv3",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "framework7": "^1.5.3",
+    "jquery": "^3.1.1"
+  }
+}
