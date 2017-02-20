@@ -1,6 +1,6 @@
 /* globals Framework7 */
 /* globals Dom7 */
-(function() {
+(function(fj) {
 'use strict';
 
 // Initialize your app
@@ -11,7 +11,7 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 
-let timelineItem;
+let currPost;
 
 // Add view
 myApp.addView('.view-main', {
@@ -19,17 +19,8 @@ myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
-function newTimelineItem() {
-  return {
-    location: "",
-    withWhom: "",
-    time: new Date(Date.now()),
-    chips: {}
-  };
-}
-
 myApp.onPageInit('textfeed', function() {
-  timelineItem = newTimelineItem();
+  currPost = fj.newPost();
 
   $$('.chip').on('click', function(){
     let content = $$(this).find('.chip-label').text();
@@ -45,7 +36,7 @@ myApp.onPageInit('textfeed', function() {
       }
     }
 
-    if (!timelineItem.chips[content]) {
+    if (!currPost.chips[content]) {
       let deleteBtn = $$('<a href="#" class="chip-delete"></a>')
         .on('click', function (e) {
           e.preventDefault();
@@ -54,13 +45,13 @@ myApp.onPageInit('textfeed', function() {
           // chip.remove();
           chip.removeClass('tagSelected');
           $$(this).remove();
-          delete timelineItem.chips[content];
+          delete currPost.chips[content];
         });
 
       $$(this).addClass('tagSelected')
         .append(deleteBtn);
 
-      timelineItem.chips[content] = {
+     currPost.chips[content] = {
         chip: content,
         majorClass: majorClass,
         minorClass: minorClass
@@ -70,8 +61,8 @@ myApp.onPageInit('textfeed', function() {
 
   $$('.form-to-data').on('click', function(){
     let formData = myApp.formToData('#my-form');
-    timelineItem.location = formData.location;
-    timelineItem.withWhom = formData.withWhom;
+    currPost.location = formData.location;
+    currPost.withWhom = formData.withWhom;
   });
 });
 
@@ -149,8 +140,8 @@ myApp.onPageInit('textfeed_plate', function() {
       feeds = [];
     }
 
-    feeds.unshift(timelineItem);
-    timelineItem = null;
+    feeds.unshift(currPost);
+    currPost = null;
 
     localStorage.setItem('foodJournalFeed', JSON.stringify(feeds));
   });
@@ -161,80 +152,13 @@ myApp.onPageInit('addvideo', function() {
   prepareRecording();
 });
 
-function insertTimelineItemDom(canvas, month, day) {
-  let monthNames = [
-    'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
-    'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
-  ];
 
-  return canvas.append($$(
-    '<div class="timeline-item">' +
-      '<div class="timeline-item-date">' +
-        '<span class="newestPostDay">' + day + '</span>' +
-        '<span class="newestPostMonth">' + monthNames[month] + '</span>' +
-      '</div>' +
-      '<div class="timeline-item-divider"></div>' +
-      '<div class="timeline-item-content">' +
-      '</div>' +
-    '</div>'
-  ));
-}
-
-function insertFeedCard(canvas, feed) {
-  let dom = $$(
-    '<div class = "timeline-item-inner">' +
-    '<div class="timeline-item-time newestPostTime">' +
-        new Date(feed.time).getHours() + ':' + new Date(feed.time).getMinutes() +
-    '</div>' +
-    'I had my meal at ' + feed.location + ' with ' + feed.withWhom + '</div>'
-  );
-
-  canvas.append(dom);
-}
 
 myApp.onPageInit('timeline', function() {
   let canvas = $$('.timeline');
-  let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
+  let posts = JSON.parse(localStorage.getItem('foodJournalFeed'));
 
-  if (!feeds || feeds.length === 0) {
-    canvas.html("No feed available.");
-    return;
-  }
-
-  // Newest first
-  feeds.sort(function(a, b) {
-    return a.time - b.time;
-  });
-
-  let currDay = -1;
-  let currMonth = -1;
-  let currYear = -1;
-  let timelineDayContainer;
-  for (let i = 0; i < Math.min(30, feeds.length); i++) {
-    let feed = feeds[i];
-    let time = new Date(feed.time);
-
-    // If day changed, start a new date
-    if (time.getDate() !== currDay ||
-        time.getMonth() !== currMonth ||
-        time.getFullYear() !== currYear) {
-      currDay = time.getDate();
-      currMonth = time.getMonth();
-      currYear = time.getFullYear();
-
-      // TimelineItem is a collection of card that is logged at the same day
-      let timelineItemDom = insertTimelineItemDom(canvas, currMonth, currDay);
-      timelineDayContainer = timelineItemDom.find('.timeline-item-content');
-    }
-
-    insertFeedCard(timelineDayContainer, feed);
-  }
-
-  // $$('.newestPostDay').html(day);
-  // $$('.newestPostTime').html(time);
-  // var generatedFeed = 'I ate at ' + formData.location + ' with ' + formData.withWhom +
-  //     '. The meal is ' + Object.keys(tagSelected);
-  // $$('#timelineEntry').html(generatedFeed);
+  fj.renderPersonalTimeline(canvas, posts);
 });
 
-})();
+})(window.fj = window.fj || {});
