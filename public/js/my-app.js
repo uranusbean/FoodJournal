@@ -148,8 +148,12 @@ myApp.onPageInit('textfeed_plate', function() {
 });
 
 myApp.onPageInit('addvideo', function() {
-  /* globals prepareRecording */
-  prepareRecording();
+  let video = new fj.Video();
+  video.initialize();
+
+  $$('button#flip').click(function(){
+    video.flipCamera();
+  });
 });
 
 
