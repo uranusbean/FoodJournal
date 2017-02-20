@@ -1,18 +1,20 @@
 /*
-*  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
-*
-*  Use of this source code is governed by a BSD-style license
-*  that can be found in the LICENSE file in the root of the source
-*  tree.
-*/
+ *  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
+ *
+ *  Use of this source code is governed by a BSD-style license
+ *  that can be found in the LICENSE file in the root of the source
+ *  tree.
+ */
 
 // This code is adapted from
 // https://rawgit.com/Miguelao/demos/master/mediarecorder.html
-'use strict';
 
+/* globals MediaRecorder */
+/* globals MediaSource */
+/* globals $ */
+/* exported prepareRecording */
 function prepareRecording() {
-
-  /* globals MediaRecorder */
+  'use strict';
 
   var mediaSource = new MediaSource();
   mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
@@ -26,36 +28,64 @@ function prepareRecording() {
   var recordButton = document.querySelector('button#record');
   var playButton = document.querySelector('button#play');
   var downloadButton = document.querySelector('button#download');
+
   recordButton.onclick = toggleRecording;
   playButton.onclick = play;
   downloadButton.onclick = download;
 
   // window.isSecureContext could be used for Chrome
   var isSecureOrigin = location.protocol === 'https:' ||
-  location.hostname === 'localhost';
+    location.hostname === 'localhost';
   if (!isSecureOrigin) {
     alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
       '\n\nChanging protocol to HTTPS');
     location.protocol = 'HTTPS';
   }
 
-  // var constraints = {
-  //   audio: true,
-  //   video: {
-  //     facingMode: { exact: "environment" }
-  //   }
-  // };
-
   var front = false;
-  document.getElementById('flip-button').onclick = function() { front = !front; };
+  document.getElementById('flip-button').onclick = function() { 
+    front = !front; 
+    var constraints = {
+      audio: true,
+      video: {
+        facingMode: (front? "user" : "environment")
+      }
+    };
+    navigator.mediaDevices.getUserMedia(constraints).
+      then(handleSuccess).catch(handleError);
+  };
+
+  let frontCamera = "";
+  let backCamera = "";
 
   var constraints = {
     audio: true,
     video: {
-      facingMode: (front? "user" : "environment")
+      deviceId: { exact: frontCamera }
     }
   };
 
+
+  navigator.mediaDevices.enumerateDevices()
+    .then(function(devices) {
+      devices.forEach(function(device) {
+        alert(JSON.stringify(device));
+        if (device.label.includes("front")) {
+          frontCamera = device.deviceId;
+          alert("Front Camera: " + frontCamera);
+        } else if (device.label.includes("back")) {
+          backCamera = device.deviceId;
+          constraints.video.deviceId.exact = backCamera;
+
+          navigator.mediaDevices.getUserMedia(constraints).
+            then(handleSuccess).catch(handleError);
+  
+          alert("Back Camera: " + backCamera);
+        }
+      });
+    });
+
+  
   function handleSuccess(stream) {
     recordButton.disabled = false;
     console.log('getUserMedia() got stream: ', stream);
@@ -68,13 +98,11 @@ function prepareRecording() {
   }
 
   function handleError(error) {
-    console.log('navigator.getUserMedia error: ', error);
+    // console.log('navigator.getUserMedia error: ', error);
+    alert(error);
   }
 
-  navigator.mediaDevices.getUserMedia(constraints).
-      then(handleSuccess).catch(handleError);
-
-  function handleSourceOpen(event) {
+ function handleSourceOpen() {
     console.log('MediaSource opened');
     sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
     console.log('Source buffer: ', sourceBuffer);
@@ -82,8 +110,8 @@ function prepareRecording() {
 
   recordedVideo.addEventListener('error', function(ev) {
     console.error('MediaRecording.recordedMedia.error()');
-    alert('Your browser can not play\n\n' + recordedVideo.src
-      + '\n\n media clip. event: ' + JSON.stringify(ev));
+    alert('Your browser can not play\n\n' + recordedVideo.src + 
+      '\n\n media clip. event: ' + JSON.stringify(ev));
   }, true);
 
   function handleDataAvailable(event) {
@@ -126,8 +154,8 @@ function prepareRecording() {
       mediaRecorder = new MediaRecorder(window.stream, options);
     } catch (e) {
       console.error('Exception while creating MediaRecorder: ' + e);
-      alert('Exception while creating MediaRecorder: '
-        + e + '. mimeType: ' + options.mimeType);
+      alert('Exception while creating MediaRecorder: ' + 
+        e + '. mimeType: ' + options.mimeType);
       return;
     }
     console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
@@ -176,18 +204,18 @@ function prepareRecording() {
   // }
   // setInterval(changeText, 5000);
 
-(function() {
+  (function() {
     var prompts = $(".prompts");
     var promptIndex = -1;
     function showNextPrompt() {
-        ++promptIndex;
-        prompts.eq(promptIndex % prompts.length)
-            .fadeIn(3000)
-            .delay(1000)
-            .fadeOut(3000, showNextPrompt);
+      ++promptIndex;
+      prompts.eq(promptIndex % prompts.length)
+        .fadeIn(3000)
+        .delay(1000)
+        .fadeOut(3000, showNextPrompt);
     }
     showNextPrompt();
-})();
+  })();
 
 
 
