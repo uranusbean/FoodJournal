@@ -149,11 +149,33 @@ myApp.onPageInit('textfeed_plate', function() {
 
 myApp.onPageInit('addvideo', function() {
   let video = new fj.Video();
-  video.initialize();
+  video.initialize().then(function() {
 
-  $$('button#flip').click(function(){
-    video.flipCamera();
+    $$('button#flip').click(function(){
+      video.flipCamera();
+    });
+
+    // Recodring
+    $$('button#record')[0].disabled = false;
+    $$('button#record').click(function() {
+      if (video.recording) {
+        video.stopRecording();   
+        $$(this).html("Start Recording");
+      } else {
+        video.startRecording();   
+        $$(this).html("Stop Recording");
+      }
+    });
+
+    // Playing
+    $$('button#play')[0].disabled = false;
+    $$('button#play').click(function() {
+      video.play();
+    });
+
+
   });
+
 });
 
 

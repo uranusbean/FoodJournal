@@ -1,18 +1,24 @@
 /* globals Dom7 */ 
+/* globals MediaRecorder */ 
 (function(fj, $){
   'use strict';
 
   fj.Video = function() {
     let cameras = [];
     let currCameraIndex = 0;
+    let stream;
+    let mediaRecorder;
+    let recordedBlobs;
     let constraints = {
-        audio: true,
-        video: {
-          deviceId: ""
-        }
-      };
+      audio: true,
+      video: {
+        deviceId: ""
+      }
+    };
     let videoCanvas = $('video#gum');
+    let recordedVideoCanvas = $('video#recorded');
 
+    this.recording = false;
 
     this.initialize = function() {
       return enumerateDevices()
@@ -25,11 +31,17 @@
         currCameraIndex = 0;
       }
 
-      if (window.stream) {
-        window.stream.getVideoTracks()[0].stop();
+      if (stream) {
+        stopStream();
       }
       return startVideo();
     };
+
+    function stopStream() {
+      stream.getTracks().forEach(function(track) {
+        track.stop();
+      });
+    }
 
     function enumerateDevices() {
       return navigator.mediaDevices.enumerateDevices()
@@ -50,14 +62,53 @@
         .then(handleSuccess).catch(handleError);
     }
 
-    function handleSuccess(stream) {
-      videoCanvas[0].srcObject = stream;
-      window.stream = stream;
+    function handleSuccess(s) {
+      videoCanvas[0].srcObject = s;
+      stream = s;
     }
-    
+
     function handleError(error) {
       alert(error);
     }
+
+    this.startRecording = function() {
+      recordedBlobs = [];
+      let options = {mimeType: 'video/webm;codecs=vp9'};
+      try {
+        mediaRecorder = new MediaRecorder(stream, options);
+      } catch (e) {
+        alert(e);
+      }
+
+      mediaRecorder.onstop = function(event) {
+        console.log('Recording stopped, ', event);
+      };
+
+      mediaRecorder.ondataavailable = function(event) {
+        if (event.data && event.data.size > 0) {
+          recordedBlobs.push(event.data);
+        }
+      };
+
+      this.recording = true;
+      mediaRecorder.start(10);
+    };
+
+    this.stopRecording = function() {
+      mediaRecorder.stop();
+      this.recording = false;
+      console.log(recordedBlobs);
+    };
+
+    this.play = function() {
+      let superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+      stopStream();
+      recordedVideoCanvas[0].controls = true;
+      recordedVideoCanvas[0].autoplay = false;
+      recordedVideoCanvas[0].loop = false;
+      recordedVideoCanvas[0].src = window.URL.createObjectURL(superBuffer);
+      videoCanvas.hide();
+    };
 
 
 
