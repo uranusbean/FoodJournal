@@ -99,19 +99,45 @@
     this.stopRecording = function() {
       mediaRecorder.stop();
       this.recording = false;
-      console.log(recordedBlobs);
+      this.play();
+    };
+
+    this.upload =function() {
+      let encoder = new FileReader();
+      encoder.onloadend = function() {
+        $.ajax({
+          url: '/api/video',
+          method: 'POST',
+          data: {
+            video: encoder.result
+          },
+          success: function(data) {
+            console.log(data);
+          }
+        });
+      };
+      encoder.readAsDataURL(new Blob(recordedBlobs));
     };
 
     this.play = function() {
       stopStream();
       let superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
       recordedVideoCanvas.show();
-      recordedVideoCanvas[0].controls = true;
-      recordedVideoCanvas[0].autoplay = false;
-      recordedVideoCanvas[0].loop = false;
       recordedVideoCanvas[0].src = window.URL.createObjectURL(superBuffer);
       videoCanvas.hide();
+      $('button#record').hide();
+      $('button#flip').hide();
+      $('button#restart').show().click(function() {
+        startOver();
+      });
     };
+
+    function startOver() {
+      $('button#record').show();
+      $('button#flip').show();
+      $('button#restart').hide();
+      startVideo();
+    }
 
     /*
     function download() {

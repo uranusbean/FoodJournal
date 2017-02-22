@@ -167,13 +167,6 @@ myApp.onPageInit('addvideo', function() {
       }
     });
 
-    // Playing
-    $$('button#play')[0].disabled = false;
-    $$('button#play').click(function() {
-      video.play();
-    });
-
-
   });
 
 });
