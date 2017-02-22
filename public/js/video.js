@@ -1,4 +1,4 @@
-/* globals Dom7 */ 
+/* globals $ */ 
 /* globals MediaRecorder */ 
 (function(fj, $){
   'use strict';
@@ -93,10 +93,12 @@
       };
 
       this.recording = true;
+      startPrompt(); 
       mediaRecorder.start(10);
     };
 
     this.stopRecording = function() {
+      stopPrompt();
       mediaRecorder.stop();
       this.recording = false;
       this.play();
@@ -137,79 +139,85 @@
       $('button#flip').show();
       $('button#restart').hide();
       startVideo();
+      $('#point-to-meal').show();
     }
 
-    /*
-    function download() {
-      var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-      var url = window.URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = 'test.webm';
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function() {
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-      }, 100);
-    }
-//---------------------------CHANGE PROMPT- ----------------------------------
-// var prompts = ["How is your meal? (size, appearance, flavour, texture)?",
-//              "How is your eating environment? (setting, temperature, music, lighting, service)?",
-//              "How are you feeling about your eating?"];
-// var count = 0;
-// function changeText() {
-//     $("#prompt").text(prompts[count]);
-//     count < 3 ? count++ : count = 0;
-// }
-// setInterval(changeText, 5000);
-
-    (function() {
-      var prompts = $(".prompts");
-      var promptIndex = -1;
+    let promptsRunning = false;
+    function startPrompt() {
+      $('#point-to-meal').hide();
+      promptsRunning = true;
+      let prompts = $(".prompts");
+      let promptIndex = -1;
       function showNextPrompt() {
         ++promptIndex;
-        prompts.eq(promptIndex % prompts.length)
-          .fadeIn(3000)
-          .delay(1000)
-          .fadeOut(3000, showNextPrompt);
+        if (promptsRunning) {
+          prompts.eq(promptIndex % prompts.length)
+            .fadeIn(3000)
+            .delay(10000)
+            .fadeOut(3000, showNextPrompt);
+        } else {
+          prompts.eq(promptIndex % prompts.length)
+            .fadeIn(3000)
+            .delay(10000)
+            .fadeOut(3000, showNextPrompt);
+        }
       }
       showNextPrompt();
-    })();
+    }
+
+    function stopPrompt() {
+      promptsRunning = false;
+      $(".prompts").hide();
+    }
+
+    //---------------------------CHANGE PROMPT- ----------------------------------
+    // var prompts = ["How is your meal? (size, appearance, flavour, texture)?",
+    //              "How is your eating environment? (setting, temperature, music, lighting, service)?",
+    //              "How are you feeling about your eating?"];
+    // var count = 0;
+    // function changeText() {
+    //     $("#prompt").text(prompts[count]);
+    //     count < 3 ? count++ : count = 0;
+    // }
+    // setInterval(changeText, 5000);
+
+    // (function() {
+    //   var prompts = $(".prompts");
+    //   var promptIndex = -1;
+    //   function showNextPrompt() {
+    //     ++promptIndex;
+    //     prompts.eq(promptIndex % prompts.length)
+    //       .fadeIn(3000)
+    //       .delay(1000)
+    //       .fadeOut(3000, showNextPrompt);
+    //   }
+    //   showNextPrompt();
+    // })();
+    //
+    //
 
 
-
-//---------------------------GO FULL SCREEN ----------------------------------
-// var goFS = document.getElementById("goFS");
-// goFS.addEventListener("click", function() {
-//     var videoElement = document.getElementById("gum");
-//     videoElement.webkitRequestFullscreen();
-// }, false);
-
-
-//---------------------------COUNT DOWN --- ----------------------------------
-// var promptButton = document.getElementById("prompt");
-// var counter = 3;
-// var newElement = document.createElement("p");
-// newElement.innerHTML = "Point camera to the food";
-// var id;
-//
-// promptButton.parentNode.replaceChild(newElement, promptButton);
-//
-// id = setInterval(function() {
-//     counter--;
-//     if(counter < 0) {
-//         newElement.parentNode.replaceChild(promptButton, newElement);
-//         clearInterval(id);
-//     } else {
-//       newElement.innerHTML = "Point camera to the food";
-//         // newElement.innerHTML = "Point camera to the food" + counter.toString() + " seconds.";
-//     }
-// }, 1000);
-//
-    */
+    //---------------------------COUNT DOWN --- ----------------------------------
+    // var promptButton = document.getElementById("prompt");
+    // var counter = 3;
+    // var newElement = document.createElement("p");
+    // newElement.innerHTML = "Point camera to the food";
+    // var id;
+    //
+    // promptButton.parentNode.replaceChild(newElement, promptButton);
+    //
+    // id = setInterval(function() {
+    //     counter--;
+    //     if(counter < 0) {
+    //         newElement.parentNode.replaceChild(promptButton, newElement);
+    //         clearInterval(id);
+    //     } else {
+    //       newElement.innerHTML = "Point camera to the food";
+    //         // newElement.innerHTML = "Point camera to the food" + counter.toString() + " seconds.";
+    //     }
+    // }, 1000);
+    //
 
 
   };
-})(window.fj = window.fj || {}, Dom7);
+})(window.fj = window.fj || {}, $);

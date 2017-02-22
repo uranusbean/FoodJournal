@@ -26,6 +26,11 @@ video#gum {
   transform: rotateY(180deg);
   -webkit-transform:rotateY(180deg); /* Safari and Chrome */
 }
+video#recorded {
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+}
+
 video:-webkit-full-screen     { max-height: 100%; }
 video:-moz-full-screen        { max-height: 100%; }
 
@@ -38,6 +43,10 @@ video:-moz-full-screen        { max-height: 100%; }
   font-size: 1.3em;
   height: 90px;
 }*/
+
+.text-centered {
+  text-align: center;
+}
 
 .prompts {
   font-size: 1.2em;
