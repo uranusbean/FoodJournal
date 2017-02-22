@@ -119,7 +119,9 @@
       this.stopStream();
       let superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
       recordedVideoCanvas.show();
+      recordedVideoCanvas[0].autoplay = false;
       recordedVideoCanvas[0].src = window.URL.createObjectURL(superBuffer);
+      recordedVideoCanvas[0].play();
       videoCanvas.hide();
       $('button#record').hide();
       $('button#flip').hide();
@@ -139,6 +141,7 @@
     let promptsRunning = false;
     function startPrompt() {
       $('#point-to-meal').hide();
+      $("#prompts-container").show();
       promptsRunning = true;
       let prompts = $(".prompts");
       let promptIndex = -1;
@@ -149,19 +152,15 @@
             .fadeIn(3000)
             .delay(10000)
             .fadeOut(3000, showNextPrompt);
-        } else {
-          prompts.eq(promptIndex % prompts.length)
-            .fadeIn(3000)
-            .delay(10000)
-            .fadeOut(3000, showNextPrompt);
-        }
+        }      
       }
       showNextPrompt();
     }
 
     function stopPrompt() {
       promptsRunning = false;
-      $(".prompts").hide();
+      $("#prompts-container").hide();
+      $(".prompts").clearQueue().hide();
     }
   };
 })(window.fj = window.fj || {}, $);
