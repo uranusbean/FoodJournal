@@ -167,6 +167,10 @@ myApp.onPageInit('addvideo', function() {
       }
     });
 
+    $$('a.back').click(function(){
+      video.stopStream();
+    });
+
   });
 
 });

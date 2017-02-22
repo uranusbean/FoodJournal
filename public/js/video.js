@@ -32,16 +32,16 @@
       }
 
       if (stream) {
-        stopStream();
+        this.stopStream();
       }
       return startVideo();
     };
 
-    function stopStream() {
+    this.stopStream = function() {
       stream.getTracks().forEach(function(track) {
         track.stop();
       });
-    }
+    };
 
     function enumerateDevices() {
       return navigator.mediaDevices.enumerateDevices()
@@ -120,7 +120,7 @@
     };
 
     this.play = function() {
-      stopStream();
+      this.stopStream();
       let superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
       recordedVideoCanvas.show();
       recordedVideoCanvas[0].src = window.URL.createObjectURL(superBuffer);
