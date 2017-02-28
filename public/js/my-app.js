@@ -148,6 +148,7 @@ myApp.onPageInit('textfeed_plate', function() {
 });
 
 myApp.onPageInit('addvideo', function() {
+  currPost = fj.newPost();
   let video = new fj.Video();
   video.initialize().then(function() {
 
@@ -169,6 +170,9 @@ myApp.onPageInit('addvideo', function() {
 
     $$('a.back').click(function(){
       video.stopStream();
+    });
+
+    $$('.save').click(function() {
     });
 
   });

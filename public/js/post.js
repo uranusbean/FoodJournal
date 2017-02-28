@@ -7,7 +7,11 @@
       location: "",
       withWhom: "",
       time: new Date(Date.now()),
-      chips: {}
+      chips: {},
+      video: {
+        data: null,
+        isEncoded: false 
+      }
     };
   };
 
