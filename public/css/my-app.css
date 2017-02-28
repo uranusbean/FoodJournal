@@ -147,3 +147,17 @@ video:-moz-full-screen        { max-height: 100%; }
   font-size: 0.8em;
   padding-left: 2px;
 }
+
+.timeline-item-time {
+  display: inline-block;
+}
+
+.timelinePostLocation {
+  display: inline-block;
+  color: #818181;
+}
+
+i.location-timeline-icon {
+  font-size: 18px;
+  vertical-align: text-bottom;
+}
