@@ -160,10 +160,10 @@ myApp.onPageInit('addvideo', function() {
     $$('button#record')[0].disabled = false;
     $$('button#record').click(function() {
       if (video.recording) {
-        video.stopRecording();   
+        video.stopRecording();
         $$(this).html("Start Recording");
       } else {
-        video.startRecording();   
+        video.startRecording();
         $$(this).html("Stop Recording");
       }
     });
@@ -177,6 +177,87 @@ myApp.onPageInit('addvideo', function() {
 
   });
 
+});
+
+myApp.onPageInit('videoinfo', function() {
+  var count = 0;
+
+  $$('.grainPortion').on('click',function(){
+    count = (count + 1) % 4;
+    if (count === 1) {
+      $$('#grainSmallPortion').css('fill-opacity', '1');
+    } else if (count === 2){
+      $$('#grainMediumPortion').css('fill-opacity', '1');
+    } else if (count === 3){
+      $$('#grainLargePortion').css('fill-opacity', '1');
+    } else if (count === 0){
+      $$('#grainSmallPortion').css('fill-opacity', '0');
+      $$('#grainMediumPortion').css('fill-opacity', '0');
+      $$('#grainLargePortion').css('fill-opacity', '0.1');
+    }
+  });
+
+  $$('.vegePortion').on('click',function(){
+    count = (count + 1) % 4;
+    if (count === 1) {
+      $$('#vegeSmallPortion').css('fill-opacity', '1');
+    } else if (count === 2){
+      $$('#vegeMediumPortion').css('fill-opacity', '1');
+    } else if (count === 3){
+      $$('#vegeLargePortion').css('fill-opacity', '1');
+    } else if (count === 0){
+      $$('#vegeSmallPortion').css('fill-opacity', '0');
+      $$('#vegeMediumPortion').css('fill-opacity', '0');
+      $$('#vegeLargePortion').css('fill-opacity', '0.1');
+    }
+  });
+
+  $$('.fruitsPortion').on('click',function(){
+    count = (count + 1) % 4;
+    if (count === 1) {
+      $$('#fruitsSmallPortion').css('fill-opacity', '1');
+    } else if (count === 2){
+      $$('#fruitsMediumPortion').css('fill-opacity', '1');
+    } else if (count === 3){
+      $$('#fruitsLargePortion').css('fill-opacity', '1');
+    } else if (count === 0){
+      $$('#fruitsSmallPortion').css('fill-opacity', '0');
+      $$('#fruitsMediumPortion').css('fill-opacity', '0');
+      $$('#fruitsLargePortion').css('fill-opacity', '0.1');
+    }
+  });
+
+  $$('.proteinPortion').on('click',function(){
+    count = (count + 1) % 4;
+    if (count === 1) {
+      $$('#proteinSmallPortion').css('fill-opacity', '1');
+    } else if (count === 2){
+      $$('#proteinMediumPortion').css('fill-opacity', '1');
+    } else if (count === 3){
+      $$('#proteinLargePortion').css('fill-opacity', '1');
+    } else if (count === 0){
+      $$('#proteinSmallPortion').css('fill-opacity', '0');
+      $$('#proteinMediumPortion').css('fill-opacity', '0');
+      $$('#proteinLargePortion').css('fill-opacity', '0.1');
+    }
+  });
+
+  $$('#quarter_pies').on('click',function(){
+    // $$('#plateDirection').css('opacity',0);
+    $$('#healthyPlateAdvice').css('opacity',1);
+  });
+
+  $$('.postBtn').on('click', function() {
+    let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
+    if (!feeds) {
+      feeds = [];
+    }
+
+    feeds.unshift(currPost);
+    currPost = null;
+
+    localStorage.setItem('foodJournalFeed', JSON.stringify(feeds));
+  });
 });
 
 
