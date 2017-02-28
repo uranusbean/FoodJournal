@@ -12,6 +12,8 @@ var myApp = new Framework7({
 var $$ = Dom7;
 
 let currPost;
+let db = new fj.DataBase();
+db.Init();
 
 // Add view
 myApp.addView('.view-main', {
