@@ -13,7 +13,6 @@ var $$ = Dom7;
 
 let currPost;
 let db = new fj.DataBase();
-db.Init();
 
 // Add view
 myApp.addView('.view-main', {
@@ -137,15 +136,7 @@ myApp.onPageInit('textfeed_plate', function() {
   });
 
   $$('.postBtn').on('click', function() {
-    let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
-    if (!feeds) {
-      feeds = [];
-    }
-
-    feeds.unshift(currPost);
-    currPost = null;
-
-    localStorage.setItem('foodJournalFeed', JSON.stringify(feeds));
+    fj.savePost(currPost, db);
   });
 });
 
@@ -174,7 +165,9 @@ myApp.onPageInit('addvideo', function() {
       video.stopStream();
     });
 
-    $$('.save').click(function() {
+    $$('.saveBtn').click(function() {
+      currPost.video = video.getVideo();
+      currPost.hasVideo = true;
     });
 
   });
@@ -250,25 +243,22 @@ myApp.onPageInit('videoinfo', function() {
   });
 
   $$('.postBtn').on('click', function() {
-    let feeds = JSON.parse(localStorage.getItem('foodJournalFeed'));
-    if (!feeds) {
-      feeds = [];
-    }
-
-    feeds.unshift(currPost);
-    currPost = null;
-
-    localStorage.setItem('foodJournalFeed', JSON.stringify(feeds));
+    fj.savePost(currPost, db);
   });
 });
 
-
-
 myApp.onPageInit('timeline', function() {
-  let canvas = $$('.timeline');
-  let posts = JSON.parse(localStorage.getItem('foodJournalFeed'));
-
-  fj.renderPersonalTimeline(canvas, posts);
+  db.db.allDocs({
+    include_docs: true, 
+    attachments: true, 
+    binary: true, 
+    descending: true
+  }).then(function(doc) {
+      console.log(doc);
+      fj.renderPersonalTimeline($$(".timeline"), doc.rows);
+    }).catch(function(err) {
+      console.log(err);
+    });
 });
 
 })(window.fj = window.fj || {});

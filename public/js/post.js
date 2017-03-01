@@ -4,15 +4,28 @@
 
   fj.newPost = function() {
     return {
+      _id: new Date(Date.now()),
       location: "",
       withWhom: "",
       time: new Date(Date.now()),
       chips: {},
-      video: {
-        data: null,
-        isEncoded: false 
-      }
+      hasVideo: false,
+      video: null
     };
+  };
+
+  fj.savePost = function(post, db) {
+    return db.db.put(post)
+      .then(function() {
+        if (post.video !== null ) {
+          console.log("Saving video");
+          return db.db.putAttachment(
+              post._id, 'video', 
+              post.video, 'video/webm');
+        }
+      }).catch(function(err){
+        console.log(err);
+      });
   };
 
   fj.renderPersonalTimeline = function(canvas, posts) {
@@ -21,17 +34,12 @@
       return;
     }
 
-    // Newest first
-    posts.sort(function(a, b) {
-      return a.time - b.time;
-    });
-
     let currDay = -1;
     let currMonth = -1;
     let currYear = -1;
     let timelineDayContainer;
     for (let i = 0; i < Math.min(30, posts.length); i++) {
-      let feed = posts[i];
+      let feed = posts[i].doc;
       let time = new Date(feed.time);
 
       // If day changed, start a new date
@@ -74,15 +82,24 @@
   let renderPostCard = function(canvas, post) {
     let dom = $(
       '<div class = "timeline-item-inner">' +
-      '<div class="timeline-item-time newestPostTime">' +
-      new Date(post.time).getHours() + ':' + 
-      new Date(post.time).getMinutes() +
-      '</div>' +
-      'I had my meal at ' + post.location + 
-      ' with ' + post.withWhom + '</div>'
+        '<div class="timeline-item-time newestPostTime">' +
+          new Date(post.time).getHours() + ':' + 
+          new Date(post.time).getMinutes() +
+        '</div>' +
+        'I had my meal at ' + post.location + 
+        ' with ' + post.withWhom + 
+        '<video controls></video>' + 
+      '</div>'
     );
-
     canvas.append(dom);
+
+    let videoPlayer = dom.find('video');
+    if (post.hasVideo) {
+      let superBuffer = new Blob(post.video, {type: 'video/webm'});
+      videoPlayer[0].src = window.URL.createObjectURL(superBuffer);
+    } else {
+      videoPlayer.hide();
+    }
   };
 
 })(window.fj = window.fj || {}, Dom7);
