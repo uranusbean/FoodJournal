@@ -1,0 +1,163 @@
+.content-block-title {
+  margin-top: 0;
+}
+
+.user-feed-icon, .location-feed-icon {
+  vertical-align: middle;
+}
+
+/*------------video section -----------*/
+#myCamera {
+  width: 100% !important;
+  height: 190px !important;
+  font-size: 1em !important;
+}
+
+.nextBtn, .saveBtn {
+  margin-right: 20px;
+}
+
+.videoBtnsRow {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+video#gum {
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+}
+video#recorded {
+  transform: rotateY(180deg);
+  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+}
+
+video:-webkit-full-screen     { max-height: 100%; }
+video:-moz-full-screen        { max-height: 100%; }
+
+/*.promptContainer {
+  /*background: red;
+}
+/*
+#prompt {
+  text-align: center;
+  font-size: 1.3em;
+  height: 90px;
+}*/
+
+.text-centered {
+  text-align: center;
+}
+
+.prompts {
+  font-size: 1.2em;
+  height: 90px;
+  padding: 2%;
+  display: none;
+  text-align: center;
+}
+
+/*------------textfeed section -----------*/
+.list-block {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.chip:active-state {
+  color:blue;
+}
+
+.tagSelected {
+  background-color: #8bc34a;
+  color: white;
+}
+
+.addNewTag {
+  color: #9e9e9e;
+}
+
+.tagCategory {
+  width: 60px;
+  display: inline-block;
+  color: #9e9e9e;
+}
+
+/*------------textfeed_plate section -----------*/
+.plateInfo {
+  padding: 1% 4% 0 4%;
+}
+
+.plateShape {
+  stroke: #e6e6e6;
+  stroke-width: 10px;
+  fill: none;
+}
+
+#plateImg {
+  width: 90%;
+  height:400px;
+}
+
+.plateShapeOuter {
+  stroke: #bcbdbc;
+  stroke-width: 10px;
+  fill: none;
+}
+
+#quarter_pies text {
+  fill: black;
+  stroke: none;
+  font-size: 1.2em;
+}
+
+#healthyPlateAdvice {
+  opacity: 0;
+}
+
+.foodPortion {
+  stroke: white;
+  stroke-width: 5;
+  fill-opacity: 0;
+}
+
+.largePortion {
+  fill-opacity: 0.1;
+}
+
+.grainPortion {
+  fill: #a68461;
+}
+.vegePortion {
+  fill: #3ab54a;
+}
+.fruitsPortion {
+  fill: #b50a37;
+}
+.proteinPortion {
+  fill: #e87d1d;
+}
+
+.privatePostOption {
+  text-align: right;
+  margin-top: 5%;
+  margin-right: 5%;
+}
+
+/*------------timeline section -----------*/
+.newestPostMonth {
+  font-size: 0.8em;
+  padding-left: 2px;
+}
+
+.timeline-item-time {
+  display: inline-block;
+}
+
+.timelinePostLocation {
+  display: inline-block;
+  color: #818181;
+}
+
+i.location-timeline-icon {
+  font-size: 18px;
+  vertical-align: text-bottom;
+}
