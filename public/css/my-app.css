@@ -6,6 +6,9 @@
   vertical-align: middle;
 }
 
+.card-footer a.link {
+  color: #8bc34a;
+}
 /*------------video section -----------*/
 #myCamera {
   width: 100% !important;

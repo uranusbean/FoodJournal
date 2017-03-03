@@ -14,6 +14,20 @@ var $$ = Dom7;
 let currPost;
 let db = new fj.DataBase();
 
+
+$$('.favoriteBorderIcon').show().on('click',function(){
+  // $$('.favoriteIcon').css('opacity',1);
+  $$('.favoriteIcon').show();
+  // $$('.favoriteBorderIcon').css('opacity', 0);
+  $$('.favoriteBorderIcon').hide();
+});
+
+$$('.favoriteIcon').hide().on('click',function(){
+
+  $$('.favoriteIcon').hide();
+  $$('.favoriteBorderIcon').show();
+});
+
 // Add view
 myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
@@ -249,9 +263,9 @@ myApp.onPageInit('videoinfo', function() {
 
 myApp.onPageInit('timeline', function() {
   db.db.allDocs({
-    include_docs: true, 
-    attachments: true, 
-    binary: true, 
+    include_docs: true,
+    attachments: true,
+    binary: true,
     descending: true
   }).then(function(doc) {
       console.log(doc);
