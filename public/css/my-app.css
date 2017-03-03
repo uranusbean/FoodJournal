@@ -151,6 +151,10 @@ video:-moz-full-screen        { max-height: 100%; }
   padding-left: 2px;
 }
 
+.timeline-item-content {
+  width: 100%;
+}
+
 .timeline-item-time {
   display: inline-block;
 }

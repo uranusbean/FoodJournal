@@ -15,12 +15,13 @@
   };
 
   fj.savePost = function(post, db) {
+    console.log(Object.keys(post));
     return db.db.put(post)
       .then(function() {
         if (post.video !== null ) {
           console.log("Saving video");
           return db.db.putAttachment(
-              post._id, 'video', 
+              post._id, 'video',
               post.video, 'video/webm');
         }
       }).catch(function(err){
@@ -51,7 +52,7 @@
         currYear = time.getFullYear();
 
         // TimelineItem is a collection of card that is logged at the same day
-        let timelineItemDom = insertTimelineItemDom(canvas, currMonth, 
+        let timelineItemDom = insertTimelineItemDom(canvas, currMonth,
           currDay);
         timelineDayContainer = timelineItemDom.find('.timeline-item-content');
       }
@@ -80,17 +81,43 @@
   };
 
   let renderPostCard = function(canvas, post) {
+    let chipDomContainer = $(
+      '<div></div>'
+    );
+
+    for (var i = 0; i < Object.keys(post.chips).length; i++) {
+      let chip = $(
+        '<div class="chip">' +
+          '<div class="chip-label">' +
+            Object.keys(post.chips)[i] +
+          '</div>' +
+        '</div>'
+      );
+      chipDomContainer.append(chip);
+    }
+
+
     let dom = $(
       '<div class = "timeline-item-inner">' +
         '<div class="timeline-item-time newestPostTime">' +
-          new Date(post.time).getHours() + ':' + 
+          new Date(post.time).getHours() + ':' +
           new Date(post.time).getMinutes() +
         '</div>' +
-        'I had my meal at ' + post.location + 
-        ' with ' + post.withWhom + 
-        '<video controls></video>' + 
+        '<div class="timelinePostLocation">' +
+          '<i class="material-icons location-timeline-icon">location_on</i>'+
+          post.location +
+        '</div>' +
+        ' with ' + post.withWhom +
+  
+        // '</br> <div class="chip">' +
+        //   '<div class="chip-label">' +
+        //       Object.keys(post.chips)[0] +
+        //   '</div>' +
+        // '</div>' +
+        '<video controls></video>' +
       '</div>'
     );
+    dom.append(chipDomContainer);
     canvas.append(dom);
 
     let videoPlayer = dom.find('video');
