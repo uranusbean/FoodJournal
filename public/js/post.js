@@ -10,7 +10,8 @@
       time: new Date(Date.now()),
       chips: {},
       hasVideo: false,
-      video: null
+      video: null,
+      videoMirrored:false 
     };
   };
 
@@ -108,7 +109,8 @@
           post.location +
         '</div>' +
         ' with ' + post.withWhom +
-        '<video controls></video>' +
+        '<video></video>' +
+        '<button>play</button>' + 
       '</div>'
     );
     dom.append(chipDomContainer);
@@ -118,9 +120,16 @@
     if (post.hasVideo) {
       let superBuffer = new Blob(post.video, {type: 'video/webm'});
       videoPlayer[0].src = window.URL.createObjectURL(superBuffer);
+      if (post.videoMirrored) {
+        videoPlayer.addClass('mirrored');
+      }
     } else {
       videoPlayer.hide();
     }
+
+    dom.find('button').click(function() {
+      videoPlayer[0].play();
+    });
   };
 
 })(window.fj = window.fj || {}, Dom7);

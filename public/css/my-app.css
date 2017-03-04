@@ -34,7 +34,7 @@
 }
 
 video.mirrored {
-  transform: rotateY(180deg);
+  transform: scale(-1, 1);
 }
 
 video:-webkit-full-screen     { max-height: 100%; }

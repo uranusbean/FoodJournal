@@ -80,6 +80,10 @@
       alert(error);
     }
 
+    this.isMirrored = function() {
+      return mirrored;
+    };
+
     this.startRecording = function() {
       recordedBlobs = [];
       let options = {mimeType: 'video/webm;codecs=vp9'};
