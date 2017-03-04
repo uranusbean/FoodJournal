@@ -1,5 +1,5 @@
-/* globals $ */ 
-/* globals MediaRecorder */ 
+/* globals $ */
+/* globals MediaRecorder */
 (function(fj, $){
   'use strict';
 
@@ -26,7 +26,7 @@
     };
 
     this.flipCamera = function() {
-      currCameraIndex += 1; 
+      currCameraIndex += 1;
       if (currCameraIndex >= cameras.length) {
         currCameraIndex = 0;
       }
@@ -87,7 +87,7 @@
       };
 
       this.recording = true;
-      startPrompt(); 
+      startPrompt();
       mediaRecorder.start(10);
     };
 
@@ -150,10 +150,10 @@
         ++promptIndex;
         if (promptsRunning) {
           prompts.eq(promptIndex % prompts.length)
-            .fadeIn(3000)
+            .fadeIn(1000)
             .delay(10000)
-            .fadeOut(3000, showNextPrompt);
-        }      
+            .fadeOut(1000, showNextPrompt);
+        }
       }
       showNextPrompt();
     }

@@ -14,7 +14,6 @@ var $$ = Dom7;
 let currPost;
 let db = new fj.DataBase();
 
-
 $$('.favoriteBorderIcon').show().on('click',function(){
   // $$('.favoriteIcon').css('opacity',1);
   $$('.favoriteIcon').show();
@@ -26,6 +25,21 @@ $$('.favoriteIcon').hide().on('click',function(){
 
   $$('.favoriteIcon').hide();
   $$('.favoriteBorderIcon').show();
+});
+
+myApp.onPageInit('index', function() {
+  $$('.favoriteBorderIcon').show().on('click',function(){
+    // $$('.favoriteIcon').css('opacity',1);
+    $$('.favoriteIcon').show();
+    // $$('.favoriteBorderIcon').css('opacity', 0);
+    $$('.favoriteBorderIcon').hide();
+  });
+
+  $$('.favoriteIcon').hide().on('click',function(){
+
+    $$('.favoriteIcon').hide();
+    $$('.favoriteBorderIcon').show();
+  });
 });
 
 // Add view
@@ -169,6 +183,7 @@ myApp.onPageInit('addvideo', function() {
       if (video.recording) {
         video.stopRecording();
         $$(this).html("Start Recording");
+        $$('.saveBtn').css('opacity',1);
       } else {
         video.startRecording();
         $$(this).html("Stop Recording");

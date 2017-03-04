@@ -10,6 +10,14 @@
   color: #8bc34a;
 }
 /*------------video section -----------*/
+.saveBtn {
+   opacity: 0;
+}
+
+#restart {
+  width: 30%;
+}
+
 #myCamera {
   width: 100% !important;
   height: 190px !important;
@@ -52,9 +60,10 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 .prompts {
-  font-size: 1.2em;
-  height: 90px;
-  padding: 2%;
+  font-size: 1em;
+  font-weight: bold;
+  height: 50px;
+  /*padding: 1%;*/
   display: none;
   text-align: center;
 }

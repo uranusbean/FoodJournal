@@ -108,12 +108,6 @@
           post.location +
         '</div>' +
         ' with ' + post.withWhom +
-  
-        // '</br> <div class="chip">' +
-        //   '<div class="chip-label">' +
-        //       Object.keys(post.chips)[0] +
-        //   '</div>' +
-        // '</div>' +
         '<video controls></video>' +
       '</div>'
     );

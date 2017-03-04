@@ -35,7 +35,9 @@ video:last-of-type {
 }
 
 video#gumVideo {
-  margin: 0 20px 20px 0;
+  /*margin: 0 20px 20px 0;*/
+  transform: scale(-1, 1);            /*For Firefox (& IE) */
+  -webkit-transform: scale(-1, 1);     /*for Chrome & Opera (& Safari) */
 }
 
 @media screen and (max-width: 500px) {
@@ -48,7 +50,8 @@ video#gumVideo {
 @media screen and (max-width: 720px) {
   video {
     /*height: calc((50vw - 48px) * 3 / 4);*/
-    margin: 0 10px 10px 0;
+    height: 440px;
+    /*margin: 0 10px 10px 0;*/
     /*width: calc(50vw - 48px);*/
     width: 100%;
   }
