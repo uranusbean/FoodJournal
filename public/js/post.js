@@ -11,7 +11,7 @@
       chips: {},
       hasVideo: false,
       video: null,
-      videoMirrored:false 
+      videoMirrored:false
     };
   };
 
@@ -32,7 +32,8 @@
 
   fj.renderPersonalTimeline = function(canvas, posts) {
     if (!posts || posts.length === 0) {
-      canvas.html("No feed available.");
+      canvas.html("<div>No journal yet</div> " +
+      "<div>Tap the  <i class=" + "material-icons" + ">add_circle_outline</i> icon to get started</div>").addClass('noFeedsMsg');
       return;
     }
 
@@ -109,22 +110,28 @@
           post.location +
         '</div>' +
         ' with ' + post.withWhom +
+      '</div>'
+    );
+
+    let videoDom = $(
+      '<div>' +
         '<video></video>' +
-        '<button>play</button>' + 
+        '<button class="playBtnInTimeline"><i class="material-icons">play_circle_outline</i></button>' +
+        '<button class="editBtnInTimeline"> <i class="material-icons">mode_edit</i> </button>' +
       '</div>'
     );
     dom.append(chipDomContainer);
+
     canvas.append(dom);
 
-    let videoPlayer = dom.find('video');
+    let videoPlayer = videoDom.find('video');
     if (post.hasVideo) {
       let superBuffer = new Blob(post.video, {type: 'video/webm'});
       videoPlayer[0].src = window.URL.createObjectURL(superBuffer);
+      dom.append(videoDom);
       if (post.videoMirrored) {
         videoPlayer.addClass('mirrored');
       }
-    } else {
-      videoPlayer.hide();
     }
 
     dom.find('button').click(function() {
