@@ -9,6 +9,11 @@
 .card-footer a.link {
   color: #8bc34a;
 }
+
+.toolbar-inner {
+  padding-left: 5em;
+  padding-right: 5em;
+}
 /*------------video section -----------*/
 .saveBtn {
    opacity: 0;
@@ -33,13 +38,8 @@
   padding-right: 2%;
 }
 
-video#gum {
-  transform: rotateY(180deg);
-  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-}
-video#recorded {
-  transform: rotateY(180deg);
-  -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+video.mirrored {
+  transform: scale(-1, 1);
 }
 
 video:-webkit-full-screen     { max-height: 100%; }
@@ -155,6 +155,25 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 /*------------timeline section -----------*/
+.noFeedsMsg {
+  background-image: url("../img/plate_nofeeds.png");
+  background-size: 45%;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  color: #848484;
+  font-size: 1.2em;
+  padding-top: 250px;
+}
+
+.noFeedsMsg div:first-child {
+  color: #4a4a4a;
+}
+
+.noFeedsMsg i {
+  vertical-align: middle;
+}
+
 .newestPostMonth {
   font-size: 0.8em;
   padding-left: 2px;
@@ -176,4 +195,23 @@ video:-moz-full-screen        { max-height: 100%; }
 i.location-timeline-icon {
   font-size: 18px;
   vertical-align: text-bottom;
+}
+
+.timeline-item-inner video{
+  width: 100%;
+}
+
+.playBtnInTimeline {
+  margin-right: 60%;
+  color: #5a5a5a;
+  /*vertical-align: middle;*/
+  /*position: absolute;
+  left: 0px;
+  top: 0px;
+  margin: 10px;
+  padding: 5px 5px;*/
+}
+
+.editBtnInTimeline {
+  color: #5a5a5a;
 }

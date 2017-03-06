@@ -197,6 +197,7 @@ myApp.onPageInit('addvideo', function() {
     $$('.saveBtn').click(function() {
       currPost.video = video.getVideo();
       currPost.hasVideo = true;
+      currPost.videoMirrored = video.isMirrored();
     });
 
   });

@@ -17,6 +17,7 @@
     };
     let videoCanvas = $('video#gum');
     let recordedVideoCanvas = $('video#recorded');
+    let mirrored = false;
 
     this.recording = false;
 
@@ -48,20 +49,28 @@
         .then(function(devices) {
           devices.forEach(function(device) {
             if (device.kind === "videoinput") {
-              cameras.push(device.deviceId);
+              cameras.push(device);
+              console.log(device);
             }
           });
         });
     }
 
     function startVideo() {
-      constraints.video.deviceId = cameras[currCameraIndex];
+      constraints.video.deviceId = cameras[currCameraIndex].deviceId;
       return navigator.mediaDevices.getUserMedia(constraints)
         .then(handleSuccess).catch(handleError);
     }
 
     function handleSuccess(s) {
       videoCanvas.show();
+      if (cameras[currCameraIndex].label.includes("back")) {
+        videoCanvas.removeClass('mirrored');
+        mirrored = false;
+      } else {
+        videoCanvas.addClass('mirrored');
+        mirrored = true;
+      }
       recordedVideoCanvas.hide();
       videoCanvas[0].srcObject = s;
       stream = s;
@@ -70,6 +79,10 @@
     function handleError(error) {
       alert(error);
     }
+
+    this.isMirrored = function() {
+      return mirrored;
+    };
 
     this.startRecording = function() {
       recordedBlobs = [];
@@ -123,6 +136,11 @@
       recordedVideoCanvas[0].autoplay = false;
       recordedVideoCanvas[0].src = window.URL.createObjectURL(superBuffer);
       recordedVideoCanvas[0].play();
+      if (mirrored) {
+        recordedVideoCanvas.addClass('mirrored');
+      } else {
+        recordedVideoCanvas.removeClass('mirrored');
+      }
       videoCanvas.hide();
       $('button#record').hide();
       $('button#flip').hide();

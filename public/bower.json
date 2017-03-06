@@ -18,6 +18,6 @@
   "dependencies": {
     "framework7": "^1.5.3",
     "jquery": "^3.1.1",
-    "pouchdb": "^6.1.2"
+    "pouchdb": "^6.1.2",
   }
 }
