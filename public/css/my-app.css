@@ -15,6 +15,10 @@
   padding-right: 5em;
 }
 /*------------video section -----------*/
+#gum, #recorded{
+  width: 100%;
+  height: 445px;
+}
 .saveBtn {
    opacity: 0;
 }
@@ -34,8 +38,7 @@
 }
 
 .videoBtnsRow {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 1% 2%;
 }
 
 video.mirrored {
@@ -59,13 +62,21 @@ video:-moz-full-screen        { max-height: 100%; }
   text-align: center;
 }
 
+#point-to-meal {
+  font-size: 1.3em;
+  height: 50px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 .prompts {
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 1.3em;
+  /*font-weight: bold;*/
   height: 50px;
   /*padding: 1%;*/
   display: none;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 /*------------textfeed section -----------*/
