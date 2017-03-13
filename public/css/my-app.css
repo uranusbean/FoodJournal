@@ -147,16 +147,16 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 .grainPortion {
-  fill: #a68461;
+  fill: #fcde9d;
 }
 .vegePortion {
-  fill: #3ab54a;
+  fill: #cae19e;
 }
 .fruitsPortion {
-  fill: #b50a37;
+  fill: #d46f73;
 }
 .proteinPortion {
-  fill: #e87d1d;
+  fill: #9585b7;
 }
 
 .privatePostOption {
