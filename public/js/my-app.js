@@ -50,7 +50,8 @@ myApp.addView('.view-main', {
 
 myApp.onPageInit('textfeed', function() {
   currPost = fj.newPost();
-
+  $("input[data-role=materialtags]").materialtags();
+  
   $$('.chip').on('click', function(){
     let content = $$(this).find('.chip-label').text();
     let minorClass = $$(this).parent().attr('class');

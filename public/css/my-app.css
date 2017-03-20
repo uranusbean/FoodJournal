@@ -80,6 +80,20 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 /*------------textfeed section -----------*/
+.materialize-tags.active {
+  border: none !important;
+  box-shadow: none !important;
+}
+.materialize-tags {
+  border: none !important;
+}
+.addNewTag textarea {
+  padding: 1px;
+  background: #e1e1e1;
+  border: none;
+  padding-top: 3px;
+}
+
 .list-block {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
