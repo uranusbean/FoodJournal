@@ -84,9 +84,15 @@ video:-moz-full-screen        { max-height: 100%; }
   border: none !important;
   box-shadow: none !important;
 }
+
 .materialize-tags {
   border: none !important;
 }
+
+.materialize-tags input {
+  font-size: 14px;
+}
+
 .addNewTag textarea {
   padding: 1px;
   background: #e1e1e1;

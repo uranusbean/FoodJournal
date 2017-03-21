@@ -50,8 +50,11 @@ myApp.addView('.view-main', {
 
 myApp.onPageInit('textfeed', function() {
   currPost = fj.newPost();
+  // placepicker
+  $(".placepicker").placepicker();
+
   $("input[data-role=materialtags]").materialtags();
-  
+
   $$('.chip').on('click', function(){
     let content = $$(this).find('.chip-label').text();
     let minorClass = $$(this).parent().attr('class');
