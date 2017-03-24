@@ -29,10 +29,13 @@
             <div class="item-media"><i class="material-icons">location_on</i></div>
             <div class="item-inner">
               <!-- <div class="item-title label">Where are you eating?</div> -->
-              <div class="item-input">
-                <input class="placepicker form-control" placeholder="Enter a location"/>
+              <div class="item-input form-group">
+                <input id="geocomplete" type="text" placeholder="Enter a location" name="location" size="90" />
+
+                <!-- <input class="placepicker form-control" placeholder="Enter a location" data-map-container-id="place-dropdown"/> -->
                 <!-- <input type="text"  name="location" placeholder="Add Location"> -->
               </div>
+              <!-- <div id="place-dropdown" class="collapse"></div> -->
             </div>
           </div>
         </li>
@@ -110,9 +113,9 @@
       <div class="chip">
         <div class="chip-label">sticky</div>
       </div>
-      <div class="chip addNewTag">
+      <!-- <div class="chip addNewTag">
         <div class="input textarea chip-label addNewTag"> + add a tag </div>
-      </div>
+      </div> -->
 
       <div class="item-input">
           <input type="text" name="tags" placeholder="+ add a tag " id="tags" value="" data-role="materialtags"/>
@@ -147,10 +150,13 @@
     <div class="chip-setting">
       <span class="tagCategory">setting</span>
       <div class="chip">
-        <div class="chip-label">light music</div>
+        <div class="chip-label">music</div>
       </div>
       <div class="chip">
         <div class="chip-label">great service</div>
+      </div>
+      <div class="chip">
+        <div class="chip-label">eating distraction</div>
       </div>
 
       <div class="item-input">

@@ -80,6 +80,10 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 /*------------textfeed section -----------*/
+.pac-container {
+  width: 80% !important;
+  z-index: 10000;
+}
 .materialize-tags.active {
   border: none !important;
   box-shadow: none !important;
