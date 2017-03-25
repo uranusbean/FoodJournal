@@ -64,7 +64,7 @@ myApp.onPageInit('textfeed', function() {
     .bind("geocode:multiple", function(event, results){
       $.log("Multiple: " + results.length + " results found");
     });
-
+  // 
   // $("#find").click(function(){
   //   $("#geocomplete").trigger("geocode");
   // });
