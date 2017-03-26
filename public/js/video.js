@@ -45,11 +45,18 @@
     };
 
     function enumerateDevices() {
+      let index = 0;
       return navigator.mediaDevices.enumerateDevices()
         .then(function(devices) {
           devices.forEach(function(device) {
             if (device.kind === "videoinput") {
               cameras.push(device);
+              if (device.label.includes("back") || 
+                device.label.includes("environment")) {
+                currCameraIndex = index;
+              }
+              index++;
+              alert(JSON.stringify(device));
               console.log(device);
             }
           });
