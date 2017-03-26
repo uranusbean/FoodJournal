@@ -56,8 +56,7 @@
                 currCameraIndex = index;
               }
               index++;
-              alert(JSON.stringify(device));
-              console.log(device);
+              // console.log(device);
             }
           });
         });
@@ -167,14 +166,14 @@
       $('button#flip').hide();
       $('button#restart').show().click(function() {
         this.startOver();
-      });
+      }.bind(this));
     };
 
     this.startOver = function() {
       $('button#record').show();
       $('button#flip').show();
       $('button#restart').hide();
-      this.startVideo();
+      startVideo.bind(this)();
       $('#point-to-meal').show();
     }
 
