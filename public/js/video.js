@@ -23,7 +23,7 @@
 
     this.initialize = function() {
       return enumerateDevices()
-        .then(startVideo);
+        .then(startVideo.bind(this));
     };
 
     this.flipCamera = function() {
@@ -35,7 +35,7 @@
       if (stream) {
         this.stopStream();
       }
-      return startVideo();
+      return startVideo.bind(this)();
     };
 
     this.stopStream = function() {
@@ -65,8 +65,20 @@
 
     function startVideo() {
       constraints.video.deviceId = cameras[currCameraIndex].deviceId;
-      return navigator.mediaDevices.getUserMedia(constraints)
-        .then(handleSuccess).catch(handleError);
+      
+      if (this.recording) {
+        return navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then(handleSuccess)
+          .catch(handleError).
+          then(this.startRecording.bind(this));
+      } else {
+        return navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then(handleSuccess)
+          .catch(handleError);
+      }
+
     }
 
     function handleSuccess(s) {
@@ -91,8 +103,10 @@
       return mirrored;
     };
 
-    this.startRecording = function() {
-      recordedBlobs = [];
+    this.startRecording = function(newRecording) {
+      if (newRecording) {
+        recordedBlobs = [];
+      }
       let options = {mimeType: 'video/webm;codecs=vp9'};
       try {
         mediaRecorder = new MediaRecorder(stream, options);
@@ -152,15 +166,15 @@
       $('button#record').hide();
       $('button#flip').hide();
       $('button#restart').show().click(function() {
-        startOver();
+        this.startOver();
       });
     };
 
-    function startOver() {
+    this.startOver = function() {
       $('button#record').show();
       $('button#flip').show();
       $('button#restart').hide();
-      startVideo();
+      this.startVideo();
       $('#point-to-meal').show();
     }
 

@@ -213,7 +213,7 @@ myApp.onPageInit('addvideo', function() {
         $$(this).html("Start Recording");
         $$('.saveBtn').css('opacity',1);
       } else {
-        video.startRecording();
+        video.startRecording(true);
         $$(this).html("Stop Recording");
       }
     });
