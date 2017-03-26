@@ -22,14 +22,14 @@
   <div class="toolbar">
     <div class="toolbar-inner">
       <!-- Toolbar links -->
-      <a href="index.html" class="link">Our Stories</a>
-      <a href="timeline.html" class="link">My Story</a>
+      <a href="index.html" class="link" onclick="ga('send', 'event', 'ourStoriesTab', 'tapOurStoriesTab', 'menuTab');">Our Stories</a>
+      <a href="timeline.html" class="link" onclick="ga('send', 'event', 'myStoryTab', 'tapMyStoryTab', 'menuTab');">My Story</a>
       <!-- <a href="#" class="link">Search</a> -->
     </div>
   </div>
 
   <!-- Speed Dial Wrap -->
-  <div class="speed-dial">
+  <div class="speed-dial" onclick="ga('send', 'event', 'addFeedBtn', 'tapAddFeedFromTimeline', 'addFeed');">
     <!-- FAB inside will open Speed Dial actions -->
     <a href="#" class="floating-button">
       <!-- First icon is visible when Speed Dial actions are closed -->
@@ -38,13 +38,13 @@
       <i class="icon icon-close"></i>
     </a>
     <!-- Speed Dial Actions -->
-    <div class="speed-dial-buttons">
+    <div class="speed-dial-buttons" onclick="ga('send', 'event', 'addVideoFeedBtn', 'tapAddVideoFeedBtn', 'addFeed');">
       <!-- First Speed Dial button -->
       <a href="addvideo.html">
         <i class="material-icons">videocam</i>
       </a>
       <!-- Second Speed Dial button -->
-      <a href="textfeed.html">
+      <a href="textfeed.html" onclick="ga('send', 'event', 'addTextFeedBtn', 'tapAddTextFeedBtn', 'addFeed');">
         <i class="material-icons">text_fields</i>
       </a>
     </div>
@@ -57,10 +57,9 @@
     <div class="timeline">
       <!-- Timeline item -->
       <!-- Timeline item with multiple events (inners) per day -->
-      <div class="timeline-item">
+      <!-- <div class="timeline-item">
         <div class="timeline-item-date">
-          <!-- 15 <small>FEB</small> -->
-          <span class="newestPostDay"></span>
+          <span class="newestPostDay">2</span>
           <span class="newestPostMonth">FEB</span>
         </div>
         <div class="timeline-item-divider"></div>
@@ -76,9 +75,9 @@
               </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Timeline item with Card -->
-      <div class="timeline-item">
+      <!-- <div class="timeline-item">
         <div class="timeline-item-date">13 <small>FEB</small></div>
         <div class="timeline-item-divider"></div>
         <div class="timeline-item-content card">
@@ -89,7 +88,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
 

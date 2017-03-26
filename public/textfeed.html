@@ -7,11 +7,13 @@
     <div class="navbar-inner">
       <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
       <div class="left sliding">
-        <a href="#" class="back link text-navbar"><i class="material-icons">arrow_back</i></a>
+        <a href="#" class="back link text-navbar" onclick="ga('send', 'event', 'backBtnOnTextfeedpage', 'tapBackBtn', 'back');">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </div>
       <!--<div class="center sliding">Food Journal</div>-->
       <div class="right nextBtn">
-        <a href="textfeed_plate.html" class="link form-to-data">Next</a>
+        <a href="textfeed_plate.html" class="link form-to-data" onclick="ga('send', 'event', 'nextBtnOnTextfeedpage', 'tapNextBtn', 'next');">Next</a>
       </div>
     </div>
   </div>
@@ -30,7 +32,8 @@
             <div class="item-inner">
               <!-- <div class="item-title label">Where are you eating?</div> -->
               <div class="item-input form-group">
-                <input id="geocomplete" type="text" placeholder="Enter a location" name="location" size="90" />
+                <input id="geocomplete" type="text" placeholder="Enter a location" name="location" size="90"
+                  onclick="ga('send', 'event', 'addLocationFromText', 'inputLocationFromText', 'locationInput');"/>
 
                 <!-- <input class="placepicker form-control" placeholder="Enter a location" data-map-container-id="place-dropdown"/> -->
                 <!-- <input type="text"  name="location" placeholder="Add Location"> -->
@@ -45,7 +48,8 @@
             <div class="item-inner">
               <!-- <div class="item-title label">Who are you dining with?</div> -->
               <div class="item-input">
-                <input type="text" name="withWhom" placeholder="With Whom">
+                <input type="text" name="withWhom" placeholder="With Whom"
+                  onclick="ga('send', 'event', 'addWhomFromText', 'inputWhomFromText', 'whomInput');">
               </div>
             </div>
           </div>

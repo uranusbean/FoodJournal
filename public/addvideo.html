@@ -7,11 +7,15 @@
     <div class="navbar-inner">
       <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
       <div class="left sliding">
-        <a href="" class="back link text-navbar"><i class="material-icons">arrow_back</i></a>
+        <a href="" class="back link text-navbar" onclick="ga('send', 'event', 'backBtnOnAddvideopage', 'tapBackBtn', 'back');">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </div>
       <!--<div class="center sliding">Food Journal</div>-->
       <div class="right">
-        <a href="videoinfo.html" class="saveBtn link text-navbar">Next</a>
+        <a href="videoinfo.html" class="saveBtn link text-navbar" onclick="ga('send', 'event', 'nextBtnOnAddvideopage', 'tapNextBtn', 'next');">
+          Next
+        </a>
       </div>
     </div>
   </div>
@@ -42,9 +46,9 @@
           <video id="recorded" autoplay loop></video>
 
           <div class="buttons-row videoBtnsRow">
-            <button id="flip" class="button button-fill button-raised">Flip Camera</button>
-            <button id="record" disabled class="button button-fill button-raised">Start Recording</button>
-            <button id="restart" style="display:none" class="button button-fill button-raised">Start Over</button>
+            <button id="flip" class="button button-fill button-raised" onclick="ga('send', 'event', 'flipCameraBtn', 'tapFlipCameraBtn', 'flipCamera');">Flip Camera</button>
+            <button id="record" disabled class="button button-fill button-raised" onclick="ga('send', 'event', 'startRecordingBtn', 'tapStartRecording', 'startRecording');">Start Recording</button>
+            <button id="restart" style="display:none" class="button button-fill button-raised" onclick="ga('send', 'event', 'startOverBtn', 'tapStartOverBtn', 'startOver');">Start Over</button>
           </div>
 
         </div>

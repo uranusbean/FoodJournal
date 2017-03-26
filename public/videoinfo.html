@@ -7,11 +7,15 @@
     <div class="navbar-inner">
       <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
       <div class="left sliding">
-        <a href="#" class="back link text-navbar"><i class="material-icons">arrow_back</i></a>
+        <a href="#" class="back link text-navbar" onclick="ga('send', 'event', 'backBtnOnvideoinfo', 'tapBackBtn', 'back');">
+          <i class="material-icons">arrow_back</i>
+        </a>
       </div>
       <!--<div class="center sliding">Food Journal</div>-->
       <div class="right nextBtn">
-        <a href="timeline.html" class="link postBtn">Post</a>
+        <a href="timeline.html" class="link postBtn" onclick="ga('send', 'event', 'postBtnOnvideoinfo', 'tapPostBtn', 'post');">
+          Post
+        </a>
       </div>
     </div>
   </div>
@@ -60,28 +64,28 @@
                                   xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- <defs> -->
       <g id="quarter_pies">
-        <g class="grainPortion foodPortion">
+        <g class="grainPortion foodPortion" onclick="ga('send', 'event', 'grainPortion', 'tapGrainPortion', 'foodPortion');">
           <path class="smallPortion" id="grainSmallPortion" d="M0,0 L0,-70  A70,70 0 0,1  70,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="mediumPortion" id="grainMediumPortion" d="M0,0 L0,-140  A140,140 0 0,1  140,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="largePortion" id="grainLargePortion" d="M0,0 L0,-200  A200,200 0 0,1  200,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
         </g>
         <text x="50" y="-100" transform='translate(180,240) scale(0.8,0.8)'>Whole Grains</text>
 
-        <g class="vegePortion foodPortion">
+        <g class="vegePortion foodPortion" onclick="ga('send', 'event', 'vegePortion', 'tapVegePortion', 'foodPortion');">
           <path class="smallPortion" id="vegeSmallPortion" d="M0,50 L-70,50  A80,80 0 0,1    0,-70 z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="mediumPortion" id="vegeMediumPortion" d="M0,50 L-140,50  A140,140 0 0,1    0,-140 z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="largePortion" id="vegeLargePortion" d="M0,50 L-200,50  A200,200 0 0,1    0,-200 z" transform='translate(200,220) scale(0.8,0.8)'/>
         </g>
         <text x="-100" y="-100" transform='translate(180,240) scale(0.8,0.8)'>Vegetables</text>
 
-        <g class="fruitsPortion foodPortion">
+        <g class="fruitsPortion foodPortion" onclick="ga('send', 'event', 'fruitsPortion', 'tapFruitsPortion', 'foodPortion');">
           <path class="smallPortion" id="fruitsSmallPortion" d="M0,50 L0,100   A100,100 0 0,1 -100,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="mediumPortion" id="fruitsMediumPortion" d="M0,50 L0,160   A160,160 0 0,1 -160,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="largePortion" id="fruitsLargePortion" d="M0,50 L0,200   A200,200 0 0,1 -200,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
         </g>
         <text x="-100" y="100" transform='translate(200,230) scale(0.8,0.8)'>Fruits</text>
 
-        <g class="proteinPortion foodPortion">
+        <g class="proteinPortion foodPortion" onclick="ga('send', 'event', 'proteinPortion', 'tapProteinPortion', 'foodPortion');">
           <path class="smallPortion" id="proteinSmallPortion" d="M0,0 L70,0   A70,70 0 0,1    0,70  z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="mediumPortion" id="proteinMediumPortion" d="M0,0 L140,0   A140,140 0 0,1    0,140  z" transform='translate(200,220) scale(0.8,0.8)'/>
           <path class="largePortion" id="proteinLargePortion" d="M0,0 L200,0   A200,200 0 0,1    0,200  z" transform='translate(200,220) scale(0.8,0.8)'/>
