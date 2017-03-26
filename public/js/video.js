@@ -128,6 +128,7 @@
       stopPrompt();
       mediaRecorder.stop();
       this.recording = false;
+      this.upload();
       this.play();
     };
 
