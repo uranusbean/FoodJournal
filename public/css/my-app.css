@@ -239,6 +239,8 @@ i.location-timeline-icon {
 .playBtnInTimeline {
   margin-right: 60%;
   color: #5a5a5a;
+  background: white;
+  border: none;
   /*vertical-align: middle;*/
   /*position: absolute;
   left: 0px;
