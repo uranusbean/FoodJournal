@@ -117,7 +117,7 @@
       '<div>' +
         '<video></video>' +
         '<button class="playBtnInTimeline"><i class="material-icons">play_circle_outline</i></button>' +
-        '<button class="editBtnInTimeline"> <i class="material-icons">mode_edit</i> </button>' +
+        // '<button class="editBtnInTimeline"> <i class="material-icons">mode_edit</i> </button>' +
       '</div>'
     );
     dom.append(chipDomContainer);

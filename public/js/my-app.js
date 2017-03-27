@@ -64,7 +64,7 @@ myApp.onPageInit('textfeed', function() {
     .bind("geocode:multiple", function(event, results){
       $.log("Multiple: " + results.length + " results found");
     });
-  // 
+  //
   // $("#find").click(function(){
   //   $("#geocomplete").trigger("geocode");
   // });
@@ -237,6 +237,12 @@ myApp.onPageInit('addvideo', function() {
 myApp.onPageInit('videoinfo', function() {
   var count = 0;
 
+  $$('.form-to-data').on('click', function(){
+    let formData = myApp.formToData('#my-form');
+    currPost.location = formData.location;
+    currPost.withWhom = formData.withWhom;
+  });
+  
   $$('.grainPortion').on('click',function(){
     count = (count + 1) % 4;
     if (count === 1) {
