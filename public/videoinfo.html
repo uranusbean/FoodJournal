@@ -7,114 +7,176 @@
     <div class="navbar-inner">
       <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
       <div class="left sliding">
-        <a href="#" class="back link text-navbar" onclick="ga('send', 'event', 'backBtnOnvideoinfo', 'tapBackBtn', 'back');">
+        <a href="#" class="back link text-navbar">
           <i class="material-icons">arrow_back</i>
         </a>
       </div>
-      <!--<div class="center sliding">Food Journal</div>-->
+      <!-- <div class="right nextBtn">
+        <a href="timeline.html" class="link postBtn form-to-data">Post</a>
+      </div> -->
       <div class="right nextBtn">
-        <a href="timeline.html" class="link postBtn form-to-data" onclick="ga('send', 'event', 'postBtnOnvideoinfo', 'tapPostBtn', 'post');">
-          Post
-        </a>
+        <a href="videoinfo2.html" class="link">Next</a>
       </div>
     </div>
   </div>
 
   <!-- Scrollable page content-->
   <div class="page-content">
-    <!-- <div class="content-block"> -->
-      <!-- <div class="content-block-inner"> -->
-
-    <form id="my-form" class="list-block">
-      <ul>
-        <!-- Text inputs -->
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="material-icons">location_on</i></div>
-            <div class="item-inner">
-              <!-- <div class="item-title label">Where are you eating?</div> -->
-              <div class="item-input">
-                <input type="text"  name="location" placeholder="Add Location">
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content">
-            <div class="item-media"><i class="material-icons">person_add</i></div>
-            <div class="item-inner">
-              <!-- <div class="item-title label">Who are you dining with?</div> -->
-              <div class="item-input">
-                <input type="text" name="withWhom" placeholder="With Whom">
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-  </form>
-
-  <div class="plateQ">
-    <div class="plateInfo">
-      <h3>Learn more about your plate</h3>
-      <div id="plateDirection">Tap on the plate sections below to add your food portion.</div>
-      <div id="healthyPlateAdvice">A healthier plate is filled with 4 categories and almost half of your plate with non-starchy vegetables.</div>
-    </div>
-    <!-- <img id="plateImg" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/plate.svg" alt="plate"> -->
-    <svg width="480" height="400" xmlns="http://www.w3.org/2000/svg"
-                                  xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- <defs> -->
-      <g id="quarter_pies">
-        <g class="grainPortion foodPortion" onclick="ga('send', 'event', 'grainPortion', 'tapGrainPortion', 'foodPortion');">
-          <path class="smallPortion" id="grainSmallPortion" d="M0,0 L0,-70  A70,70 0 0,1  70,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="mediumPortion" id="grainMediumPortion" d="M0,0 L0,-140  A140,140 0 0,1  140,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="largePortion" id="grainLargePortion" d="M0,0 L0,-200  A200,200 0 0,1  200,0  z" transform='translate(200,220) scale(0.8,0.8)'/>
-        </g>
-        <text x="50" y="-100" transform='translate(180,240) scale(0.8,0.8)'>Whole Grains</text>
-
-        <g class="vegePortion foodPortion" onclick="ga('send', 'event', 'vegePortion', 'tapVegePortion', 'foodPortion');">
-          <path class="smallPortion" id="vegeSmallPortion" d="M0,50 L-70,50  A80,80 0 0,1    0,-70 z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="mediumPortion" id="vegeMediumPortion" d="M0,50 L-140,50  A140,140 0 0,1    0,-140 z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="largePortion" id="vegeLargePortion" d="M0,50 L-200,50  A200,200 0 0,1    0,-200 z" transform='translate(200,220) scale(0.8,0.8)'/>
-        </g>
-        <text x="-100" y="-100" transform='translate(180,240) scale(0.8,0.8)'>Vegetables</text>
-
-        <g class="fruitsPortion foodPortion" onclick="ga('send', 'event', 'fruitsPortion', 'tapFruitsPortion', 'foodPortion');">
-          <path class="smallPortion" id="fruitsSmallPortion" d="M0,50 L0,100   A100,100 0 0,1 -100,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="mediumPortion" id="fruitsMediumPortion" d="M0,50 L0,160   A160,160 0 0,1 -160,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="largePortion" id="fruitsLargePortion" d="M0,50 L0,200   A200,200 0 0,1 -200,50    z" transform='translate(200,220) scale(0.8,0.8)'/>
-        </g>
-        <text x="-100" y="100" transform='translate(200,230) scale(0.8,0.8)'>Fruits</text>
-
-        <g class="proteinPortion foodPortion" onclick="ga('send', 'event', 'proteinPortion', 'tapProteinPortion', 'foodPortion');">
-          <path class="smallPortion" id="proteinSmallPortion" d="M0,0 L70,0   A70,70 0 0,1    0,70  z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="mediumPortion" id="proteinMediumPortion" d="M0,0 L140,0   A140,140 0 0,1    0,140  z" transform='translate(200,220) scale(0.8,0.8)'/>
-          <path class="largePortion" id="proteinLargePortion" d="M0,0 L200,0   A200,200 0 0,1    0,200  z" transform='translate(200,220) scale(0.8,0.8)'/>
-        </g>
-        <text x="50" y="100" transform='translate(180,200) scale(0.8,0.8)'>Healthy Proteins</text>
-      </g>
-
-      <circle class="plateShape" cx="200" cy="220" r="160"/>
-      <!-- <circle class="plateShapeOuter" cx="200" cy="220" r="170"/> -->
-    <!-- </defs> -->
-
-    <!-- <rect x="0" y="0" width="100%" height="100%" fill="white"></rect> -->
-     <!-- <use transform="translate(200,180) scale(0.8,0.8)" xlink:href="#quarter_pies"></use> -->
-   </svg>
-
-<!--
-    <div class="item-content privatePostOption">
-      <div class="item-inner">
-        <div class="item-title label">Private Post</div>
-        <div class="item-input">
-          <label class="label-switch">
-            <input type="checkbox">
-            <div class="checkbox"></div>
-          </label>
+    <div class="content-block-title tagCategoryTitle">My Eating Environment</div>
+    <!-- Meal category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Meal</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/breakfast.png" alt="breakfast"></div>
+          <div class="tagName">breakfast</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/lunch.png" alt="lunch"></div>
+          <div class="tagName">lunch</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/dinner.png" alt="dinner"></div>
+          <div class="tagName">dinner</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/lunch.png" alt="snack"></div>
+          <div class="tagName">snack</div>
         </div>
       </div>
-    </div> -->
+    </div>
 
-  </div>
+    <!-- Location category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Location</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/home.png" alt="home"></div>
+          <div class="tagName">home</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/restaurant.png" alt="restaurant"></div>
+          <div class="tagName">restaurant</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/work.png" alt="work"></div>
+          <div class="tagName">eat at work</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/fastfood.png" alt="fastfood"></div>
+          <div class="tagName">fast food</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Companion category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Companion</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/alone.png" alt="alone"></div>
+          <div class="tagName">alone</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/friends.png" alt="friends"></div>
+          <div class="tagName">friends</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/family.png" alt="family"></div>
+          <div class="tagName">family</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/pet.png" alt="pet"></div>
+          <div class="tagName">pet</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Atmospherics category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Atmospherics</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/dimmerLight.png" alt="dimmerLight"></div>
+          <div class="tagName">dimmer light</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/brighterLight.png" alt="brighterLight"></div>
+          <div class="tagName">brighter light</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/slowMusic.png" alt="slowMusic"></div>
+          <div class="tagName">slow music</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/fastMusic.png" alt="fastMusic"></div>
+          <div class="tagName">fast music</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/hot.png" alt="hot"></div>
+          <div class="tagName">hot</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/cold.png" alt="cold"></div>
+          <div class="tagName">cold</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/lightAroma.png" alt="lightAroma"></div>
+          <div class="tagName">light aroma</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/lightAroma.png" alt="strongAroma"></div>
+          <div class="tagName">strong aroma</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eating Effort category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Eating Effort</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/leftover.png" alt="leftover"></div>
+          <div class="tagName">left over</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/takeout.png" alt="takeout"></div>
+          <div class="tagName">take out</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/easyCooking.png" alt="easyCooking"></div>
+          <div class="tagName">easy cook</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/masterchef.png" alt="masterchef"></div>
+          <div class="tagName">masterchef</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eating Effort category tags -->
+    <div class="content-block">
+      <div class="tagCategorySubtitle">Distraction</div>
+      <div class="row no-gutter">
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/tv.png" alt="TV"></div>
+          <div class="tagName">TV</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/reading.png" alt="reading"></div>
+          <div class="tagName">reading</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/computer.png" alt="computer"></div>
+          <div class="tagName">computer</div>
+        </div>
+        <div class="col-25">
+          <div class="iconImage"><img src="img/icon/driving.png" alt="driving"></div>
+          <div class="tagName">driving</div>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>

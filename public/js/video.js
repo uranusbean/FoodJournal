@@ -51,7 +51,7 @@
           devices.forEach(function(device) {
             if (device.kind === "videoinput") {
               cameras.push(device);
-              if (device.label.includes("back") || 
+              if (device.label.includes("back") ||
                 device.label.includes("environment")) {
                 currCameraIndex = index;
               }
@@ -64,7 +64,7 @@
 
     function startVideo() {
       constraints.video.deviceId = cameras[currCameraIndex].deviceId;
-      
+
       if (this.recording) {
         return navigator.mediaDevices
           .getUserMedia(constraints)
@@ -177,7 +177,7 @@
       startVideo.bind(this)();
       $('#point-to-meal').show();
     }
-
+    
     let promptsRunning = false;
     function startPrompt() {
       $('#point-to-meal').hide();

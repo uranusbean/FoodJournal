@@ -7,13 +7,12 @@
     <div class="navbar-inner">
       <!-- <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div> -->
       <div class="left sliding">
-        <a href="" class="back link text-navbar" onclick="ga('send', 'event', 'backBtnOnAddvideopage', 'tapBackBtn', 'back');">
+        <a href="" class="back link text-navbar">
           <i class="material-icons">arrow_back</i>
         </a>
       </div>
-      <!--<div class="center sliding">Food Journal</div>-->
       <div class="right">
-        <a href="videoinfo.html" class="saveBtn link text-navbar" onclick="ga('send', 'event', 'nextBtnOnAddvideopage', 'tapNextBtn', 'next');">
+        <a href="videoinfo.html" class="saveBtn link text-navbar">
           Next
         </a>
       </div>
@@ -26,19 +25,14 @@
       <div class="content-block-inner">
         <div id="container">
           <div id="point-to-meal" class="text-centered">
-            Point the camera to your meal and tap </br> START RECORDING
+            How is your eating experience?</br>
+            Your eating environment, food, and your feelings…</br></br>
+            Tap START RECORDING to record
           </div>
           <div id="prompts-container">
             <div class="prompts">
-              How is your meal? </br>
-              Size, Appearance, Flavour, Texture
-            </div>
-            <div class="prompts">
-              How is your eating environment? </br>
-              Setting, Temperature, Music, Lighting, Service
-            </div>
-            <div class="prompts">
-              How are you feeling about your eating? </br>
+              How is your eating experience?</br>
+              Your eating environment, food, and your feelings…
             </div>
           </div>
 
@@ -46,9 +40,15 @@
           <video id="recorded" autoplay loop></video>
 
           <div class="buttons-row videoBtnsRow">
-            <button id="flip" class="button button-fill button-raised" onclick="ga('send', 'event', 'flipCameraBtn', 'tapFlipCameraBtn', 'flipCamera');">Flip Camera</button>
-            <button id="record" disabled class="button button-fill button-raised" onclick="ga('send', 'event', 'startRecordingBtn', 'tapStartRecording', 'startRecording');">Start Recording</button>
-            <button id="restart" style="display:none" class="button button-fill button-raised" onclick="ga('send', 'event', 'startOverBtn', 'tapStartOverBtn', 'startOver');">Start Over</button>
+            <!-- <button id="flip" class="button"> -->
+            <button id="flip" class="button button-fill button-raised">Switch camera
+              <!-- <i class="material-icons">switch_camera</i> -->
+            </button>
+            <button id="record" disabled class="button button-fill button-raised">
+              Start recording
+              <!-- <i class="material-icons">fiber_manual_record</i> -->
+            </button>
+            <button id="restart" style="display:none" class="button button-fill button-raised">Start Over</button>
           </div>
 
         </div>
