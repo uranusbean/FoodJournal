@@ -89,7 +89,7 @@ video:-moz-full-screen        { max-height: 100%; }
 }
 
 
-/*------------tags -----------*/
+/*------------Emofood tags -----------*/
 .col-25 {
   border: 1px solid #e0e0e0;
   text-align: center;
@@ -104,6 +104,15 @@ video:-moz-full-screen        { max-height: 100%; }
   margin: auto;
   padding-bottom: 2px;
 }
+
+.newTagSelected {
+  background: #d4d4d4;
+}
+
+.hiddenTag {
+  display: none;
+}
+
 /*------------textfeed section -----------*/
 .pac-container {
   width: 80% !important;
