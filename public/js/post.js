@@ -5,10 +5,11 @@
   fj.newPost = function() {
     return {
       _id: new Date(Date.now()),
-      location: "",
-      withWhom: "",
+      // location: "",
+      // withWhom: "",
       time: new Date(Date.now()),
-      chips: {},
+      // chips: {},
+      tags: [],
       hasVideo: false,
       video: null,
       videoMirrored:false

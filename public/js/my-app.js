@@ -110,14 +110,16 @@ let groupTable = {
 }
 
 myApp.onPageInit('videoinfo', function() {
-  // tags section goes from here
+  if(currPost === undefined) {
+    currPost = fj.newPost();
+  }
+
   $$('.tagContainer').on('click',function(){
-    $$(this).toggleClass('newtagSelected');
-    let content = $$(this).find('.tagName').text();
-    let subCat =  $$(this).parent().parent().text();
-    // let subCat = $$(this).parent().parent().attr('class');
-    console.log(subCat);
-    console.log(content);
+    $$(this).toggleClass('newTagSelected');
+    let content = $$(this).find('.hiddenTag').text();
+    // console.log(content);
+    currPost.tags.push(content);
+    console.log(currPost);
   });
 
 });
