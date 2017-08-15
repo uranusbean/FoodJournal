@@ -124,6 +124,36 @@ myApp.onPageInit('videoinfo', function() {
 
 });
 
+myApp.onPageInit('videoinfo2', function() {
+  if(currPost === undefined) {
+    currPost = fj.newPost();
+  }
+
+  $$('.tagContainer').on('click',function(){
+    $$(this).toggleClass('newTagSelected');
+    let content = $$(this).find('.hiddenTag').text();
+    // console.log(content);
+    currPost.tags.push(content);
+    console.log(currPost);
+  });
+
+});
+
+myApp.onPageInit('videoinfo3', function() {
+  if(currPost === undefined) {
+    currPost = fj.newPost();
+  }
+
+  $$('.tagContainer').on('click',function(){
+    $$(this).toggleClass('newTagSelected');
+    let content = $$(this).find('.hiddenTag').text();
+    // console.log(content);
+    currPost.tags.push(content);
+    console.log(currPost);
+  });
+
+});
+
 myApp.onPageInit('textfeed', function() {
   currPost = fj.newPost();
 
