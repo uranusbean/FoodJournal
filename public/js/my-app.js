@@ -24,134 +24,26 @@ myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
-let groupTable = {
-    // Environment
-    breakfast: {type: 'meal', group:'environment'},
-    lunch: {type: 'meal', group:'environment'},
-    dinner: {type: 'meal', group:'environment'},
-    snack: {type: 'meal', group:'environment'},
+function videoInfoInit(){
+  if(currPost === undefined) {
+    currPost = fj.newPost();
+  }
 
-    home: {type: 'location', group:'environment'},
-    restaurant: {type: 'location', group:'environment'},
-    work: {type: 'location', group:'environment'},
-    fastfood: {type: 'location', group:'environment'},
-
-    alone: {type: 'companion', group:'environment'},
-    friends: {type: 'companion', group:'environment'},
-    family: {type: 'companion', group:'environment'},
-    pet: {type: 'companion', group:'environment'},
-
-    dimmerLight: {type: 'atmospherics', group:'environment'},
-    brighterLight: {type: 'atmospherics', group:'environment'},
-    slowMusic: {type: 'atmospherics', group:'environment'},
-    fastMusic: {type: 'atmospherics', group:'environment'},
-    hot: {type: 'atmospherics', group:'environment'},
-    cold: {type: 'atmospherics', group:'environment'},
-    lightAroma: {type: 'atmospherics', group:'environment'},
-    strongAroma: {type: 'atmospherics', group:'environment'},
-
-    leftover: {type: 'eatingEffort', group:'environment'},
-    takeout: {type: 'eatingEffort', group:'environment'},
-    easycooking: {type: 'eatingEffort', group:'environment'},
-    masterchef: {type: 'eatingEffort', group:'environment'},
-
-    TV: {type: 'distraction', group:'environment'},
-    reading: {type: 'distraction', group:'environment'},
-    computer: {type: 'distraction', group:'environment'},
-    driving: {type: 'distraction', group:'environment'},
-
-    //Food
-    water: {type: 'drink', group:'food'},
-    coffee: {type: 'drink', group:'food'},
-    tea: {type: 'drink', group:'food'},
-    dairy: {type: 'drink', group:'food'},
-    soda: {type: 'drink', group:'food'},
-    juice: {type: 'drink', group:'food'},
-    alcohol: {type: 'drink', group:'food'},
-
-    darkGreenVeg: {type: 'vegetable', group:'food'},
-    starchyVeg: {type: 'vegetable', group:'food'},
-    redOrgangeVeg: {type: 'vegetable', group:'food'},
-    peasBeans: {type: 'vegetable', group:'food'},
-
-    egg: {type: 'protein', group:'food'},
-    poultry: {type: 'protein', group:'food'},
-    seafood: {type: 'protein', group:'food'},
-    tofu: {type: 'protein', group:'food'},
-    nutsSeeds: {type: 'protein', group:'food'},
-    meat: {type: 'protein', group:'food'},
-    peasBeans: {type: 'protein', group:'food'},
-    processedMeat: {type: 'protein', group:'food'},
-
-    wholeGrains: {type: 'grains', group:'food'},
-    refinedGrains: {type: 'grains', group:'food'},
-
-    freshFruit: {type: 'fruit', group:'food'},
-    cannedFruit: {type: 'fruit', group:'food'},
-    driedFruit: {type: 'fruit', group:'food'},
-    frozenFruit: {type: 'fruit', group:'food'},
-
-    // Feelings
-    satisfied: {type: 'positive', group:'feeling'},
-    happy: {type: 'positive', group:'feeling'},
-    peaceful: {type: 'positive', group:'feeling'},
-    energetic: {type: 'positive', group:'feeling'},
-    enthusiastic: {type: 'positive', group:'feeling'},
-    warm: {type: 'positive', group:'feeling'},
-    good: {type: 'positive', group:'feeling'},
-    joyful: {type: 'positive', group:'feeling'},
-
-    disgusted: {type: 'negative', group:'feeling'},
-    bored: {type: 'negative', group:'feeling'},
-    worried: {type: 'negative', group:'feeling'},
-    disppointed: {type: 'negative', group:'feeling'},
-    guilty: {type: 'negative', group:'feeling'},
-    angry: {type: 'negative', group:'feeling'}
+  $$('.tagContainer').on('click',function(){
+    $$(this).toggleClass('newTagSelected');
+    let content = $$(this).find('.hiddenTag').text();
+    // console.log(content);
+    currPost.tags.push(content);
+    console.log(currPost);
+  });
 }
 
-myApp.onPageInit('videoinfo', function() {
-  if(currPost === undefined) {
-    currPost = fj.newPost();
-  }
+myApp.onPageInit('videoinfo', videoInfoInit);
+myApp.onPageInit('videoinfo2', videoInfoInit);
+myApp.onPageInit('videoinfo3', videoInfoInit);
 
-  $$('.tagContainer').on('click',function(){
-    $$(this).toggleClass('newTagSelected');
-    let content = $$(this).find('.hiddenTag').text();
-    // console.log(content);
-    currPost.tags.push(content);
-    console.log(currPost);
-  });
-
-});
-
-myApp.onPageInit('videoinfo2', function() {
-  if(currPost === undefined) {
-    currPost = fj.newPost();
-  }
-
-  $$('.tagContainer').on('click',function(){
-    $$(this).toggleClass('newTagSelected');
-    let content = $$(this).find('.hiddenTag').text();
-    // console.log(content);
-    currPost.tags.push(content);
-    console.log(currPost);
-  });
-
-});
-
-myApp.onPageInit('videoinfo3', function() {
-  if(currPost === undefined) {
-    currPost = fj.newPost();
-  }
-
-  $$('.tagContainer').on('click',function(){
-    $$(this).toggleClass('newTagSelected');
-    let content = $$(this).find('.hiddenTag').text();
-    // console.log(content);
-    currPost.tags.push(content);
-    console.log(currPost);
-  });
-
+myApp.onPageInit('postDetail',function(){
+  fj.renderPostDetail(currPost);
 });
 
 myApp.onPageInit('textfeed', function() {
