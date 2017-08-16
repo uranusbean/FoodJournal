@@ -107,7 +107,10 @@ video:-moz-full-screen        { max-height: 100%; }
 .hiddenTag {
   display: none;
 }
-
+/*-------video-------(new)*/
+.videoContainer video {
+  width: 100%;
+}
 /*------------textfeed section -----------*/
 .pac-container {
   width: 80% !important;
