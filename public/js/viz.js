@@ -40,6 +40,8 @@
       return a.value.seq - b.value.seq;
     });
     console.log(allSelectedTagList);
+    allSelectedTagList.push(allSelectedTagList[0]);
+
     let line = d3.line()
       .x(function(d) {
         return w/2 + Math.sin(angleStepSize * d.value.seq) * r;
@@ -59,15 +61,10 @@
       .datum(allSelectedTagList)
       .attr('class', 'line')
       .attr('d', line)
-      .style('fill','#8bc34a')
-      .style('fill-opacity',0.3);
-      // .style('stroke','#eee')
-      // .style('stroke-width','2px');
-
-
+      .style('fill','#dcdcdc')
+      .style('fill-opacity',0.3)
+      .style('stroke','#545454')
+      .style('stroke-width','3px');
   }
-
-
-
 
 })(window.fj = window.fj || {});
