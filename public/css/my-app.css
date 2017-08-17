@@ -29,11 +29,15 @@
   display: none !important;
 }
 
-/*------------viz -----------*/
+/*------------post detail  -----------*/
 .canvas {
   padding-top: 25px;
 }
 
+.exploreBtn {
+  width: 50%;
+  margin: 5% auto;
+}
 
 /*------------video section -----------*/
 #gum, #recorded{

@@ -40,7 +40,7 @@
       return a.value.seq - b.value.seq;
     });
     console.log(allSelectedTagList);
-    allSelectedTagList.push(allSelectedTagList[0]);
+    allSelectedTagList.push(allSelectedTagList[0]);// aim to draw closed path 
 
     let line = d3.line()
       .x(function(d) {
