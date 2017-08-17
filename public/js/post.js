@@ -4,87 +4,87 @@
 
   fj.groupTable = {
     // Environment
-    breakfast: {type: 'meal', group:'environment'},
-    lunch: {type: 'meal', group:'environment'},
-    dinner: {type: 'meal', group:'environment'},
-    snack: {type: 'meal', group:'environment'},
+    breakfast: {type: 'meal', group:'environment', seq:0},
+    lunch: {type: 'meal', group:'environment', seq:1},
+    dinner: {type: 'meal', group:'environment', seq:2},
+    snack: {type: 'meal', group:'environment', seq:3},
 
-    home: {type: 'location', group:'environment'},
-    restaurant: {type: 'location', group:'environment'},
-    work: {type: 'location', group:'environment'},
-    fastfood: {type: 'location', group:'environment'},
+    home: {type: 'location', group:'environment', seq:4},
+    restaurant: {type: 'location', group:'environment', seq:5},
+    work: {type: 'location', group:'environment', seq:6},
+    fastfood: {type: 'location', group:'environment', seq:7},
 
-    alone: {type: 'companion', group:'environment'},
-    friends: {type: 'companion', group:'environment'},
-    family: {type: 'companion', group:'environment'},
-    pet: {type: 'companion', group:'environment'},
+    alone: {type: 'companion', group:'environment', seq:8},
+    friends: {type: 'companion', group:'environment', seq:9},
+    family: {type: 'companion', group:'environment', seq:10},
+    pet: {type: 'companion', group:'environment', seq:11},
 
-    dimmerLight: {type: 'atmospherics', group:'environment'},
-    brighterLight: {type: 'atmospherics', group:'environment'},
-    slowMusic: {type: 'atmospherics', group:'environment'},
-    fastMusic: {type: 'atmospherics', group:'environment'},
-    hot: {type: 'atmospherics', group:'environment'},
-    cold: {type: 'atmospherics', group:'environment'},
-    lightAroma: {type: 'atmospherics', group:'environment'},
-    strongAroma: {type: 'atmospherics', group:'environment'},
+    dimmerLight: {type: 'atmospherics', group:'environment', seq:12},
+    brighterLight: {type: 'atmospherics', group:'environment', seq:13},
+    slowMusic: {type: 'atmospherics', group:'environment', seq:14},
+    fastMusic: {type: 'atmospherics', group:'environment', seq:15},
+    hot: {type: 'atmospherics', group:'environment', seq:16},
+    cold: {type: 'atmospherics', group:'environment', seq:17},
+    lightAroma: {type: 'atmospherics', group:'environment', seq:18},
+    strongAroma: {type: 'atmospherics', group:'environment', seq:19},
 
-    leftover: {type: 'eatingEffort', group:'environment'},
-    takeout: {type: 'eatingEffort', group:'environment'},
-    easycooking: {type: 'eatingEffort', group:'environment'},
-    masterchef: {type: 'eatingEffort', group:'environment'},
+    leftover: {type: 'eatingEffort', group:'environment', seq:20},
+    takeout: {type: 'eatingEffort', group:'environment', seq:21},
+    easycooking: {type: 'eatingEffort', group:'environment', seq:22},
+    masterchef: {type: 'eatingEffort', group:'environment', seq:23},
 
-    TV: {type: 'distraction', group:'environment'},
-    reading: {type: 'distraction', group:'environment'},
-    computer: {type: 'distraction', group:'environment'},
-    driving: {type: 'distraction', group:'environment'},
+    TV: {type: 'distraction', group:'environment', seq:24},
+    reading: {type: 'distraction', group:'environment', seq:25},
+    computer: {type: 'distraction', group:'environment', seq:26},
+    driving: {type: 'distraction', group:'environment', seq:27},
 
     //Food
-    water: {type: 'drink', group:'food'},
-    coffee: {type: 'drink', group:'food'},
-    tea: {type: 'drink', group:'food'},
-    dairy: {type: 'drink', group:'food'},
-    soda: {type: 'drink', group:'food'},
-    juice: {type: 'drink', group:'food'},
-    alcohol: {type: 'drink', group:'food'},
+    water: {type: 'drink', group:'food', seq:28},
+    coffee: {type: 'drink', group:'food', seq:29},
+    tea: {type: 'drink', group:'food', seq:30},
+    dairy: {type: 'drink', group:'food', seq:31},
+    soda: {type: 'drink', group:'food', seq:32},
+    juice: {type: 'drink', group:'food', seq:33},
+    alcohol: {type: 'drink', group:'food', seq:34},
 
-    darkGreenVeg: {type: 'vegetable', group:'food'},
-    starchyVeg: {type: 'vegetable', group:'food'},
-    redOrgangeVeg: {type: 'vegetable', group:'food'},
-    peasBeans: {type: 'vegetable', group:'food'},
+    darkGreenVeg: {type: 'vegetable', group:'food', seq:35},
+    starchyVeg: {type: 'vegetable', group:'food', seq:36},
+    redOrgangeVeg: {type: 'vegetable', group:'food', seq:37},
+    peasBeans: {type: 'vegetable', group:'food', seq:38},
 
-    egg: {type: 'protein', group:'food'},
-    poultry: {type: 'protein', group:'food'},
-    seafood: {type: 'protein', group:'food'},
-    tofu: {type: 'protein', group:'food'},
-    nutsSeeds: {type: 'protein', group:'food'},
-    meat: {type: 'protein', group:'food'},
-    peasBeans: {type: 'protein', group:'food'},
-    processedMeat: {type: 'protein', group:'food'},
+    egg: {type: 'protein', group:'food', seq:39},
+    poultry: {type: 'protein', group:'food', seq:40},
+    seafood: {type: 'protein', group:'food', seq:41},
+    tofu: {type: 'protein', group:'food', seq:42},
+    nutsSeeds: {type: 'protein', group:'food', seq:43},
+    meat: {type: 'protein', group:'food', seq:44},
+    peasBeans: {type: 'protein', group:'food', seq:45},
+    processedMeat: {type: 'protein', group:'food', seq:46},
 
-    wholeGrains: {type: 'grains', group:'food'},
-    refinedGrains: {type: 'grains', group:'food'},
+    wholeGrains: {type: 'grains', group:'food', seq:47},
+    refinedGrains: {type: 'grains', group:'food', seq:48},
 
-    freshFruit: {type: 'fruit', group:'food'},
-    cannedFruit: {type: 'fruit', group:'food'},
-    driedFruit: {type: 'fruit', group:'food'},
-    frozenFruit: {type: 'fruit', group:'food'},
+    freshFruit: {type: 'fruit', group:'food', seq:49},
+    cannedFruit: {type: 'fruit', group:'food', seq:50},
+    driedFruit: {type: 'fruit', group:'food', seq:51},
+    frozenFruit: {type: 'fruit', group:'food', seq:52},
 
     // Feelings
-    satisfied: {type: 'positive', group:'feeling'},
-    happy: {type: 'positive', group:'feeling'},
-    peaceful: {type: 'positive', group:'feeling'},
-    energetic: {type: 'positive', group:'feeling'},
-    enthusiastic: {type: 'positive', group:'feeling'},
-    warm: {type: 'positive', group:'feeling'},
-    good: {type: 'positive', group:'feeling'},
-    joyful: {type: 'positive', group:'feeling'},
+    satisfied: {type: 'positive', group:'feeling', seq:53},
+    happy: {type: 'positive', group:'feeling', seq:54},
+    peaceful: {type: 'positive', group:'feeling', seq:55},
+    energetic: {type: 'positive', group:'feeling', seq:56},
+    enthusiastic: {type: 'positive', group:'feeling', seq:57},
+    warm: {type: 'positive', group:'feeling', seq:58},
+    good: {type: 'positive', group:'feeling', seq:59},
+    joyful: {type: 'positive', group:'feeling', seq:60},
 
-    disgusted: {type: 'negative', group:'feeling'},
-    bored: {type: 'negative', group:'feeling'},
-    worried: {type: 'negative', group:'feeling'},
-    disppointed: {type: 'negative', group:'feeling'},
-    guilty: {type: 'negative', group:'feeling'},
-    angry: {type: 'negative', group:'feeling'}
+    disgusted: {type: 'negative', group:'feeling', seq:61},
+    bored: {type: 'negative', group:'feeling', seq:62},
+    worried: {type: 'negative', group:'feeling', seq:63},
+    disppointed: {type: 'negative', group:'feeling', seq:64},
+    guilty: {type: 'negative', group:'feeling', seq:65},
+    angry: {type: 'negative', group:'feeling', seq:66}
   };
 
   fj.newPost = function() {
@@ -94,7 +94,7 @@
       // withWhom: "",
       time: new Date(Date.now()),
       // chips: {},
-      tags: [],
+      tags: {},
       hasVideo: false,
       video: null,
       videoMirrored:false
@@ -127,11 +127,26 @@
       }
     }
 
-    $('.videoContainer').find('button').click(function() {
-      videoPlayer[0].play();
+    $('.video').parent().click(function () {
+      if($(this).children('.video').get(0).paused){
+        $(this).children('.video').get(0).play();
+        $(this).children('.playBtnInTimeline').fadeOut();
+      }else{
+        $(this).children('.video').get(0).pause();
+        $(this).children('.playBtnInTimeline').fadeIn();
+      }
     });
+    // $('.playBtnInTimeline').click(function() {
+    //   videoPlayer[0].play();
+    //   $('.playBtnInTimeline').fadeOut();
+    // });
 
-    fj.showViz();
+    // $('.videoContainer').find('button').click(function() {
+    //   videoPlayer[0].play();
+    //   // $('.playBtnIcon').fadeOut();
+    // });
+
+    fj.showViz(post);
   }
 
   fj.renderPersonalTimeline = function(canvas, posts) {
@@ -221,7 +236,6 @@
       '<div>' +
         '<video></video>' +
         '<button class="playBtnInTimeline"><i class="material-icons">play_circle_outline</i></button>' +
-        // '<button class="editBtnInTimeline"> <i class="material-icons">mode_edit</i> </button>' +
       '</div>'
     );
     dom.append(chipDomContainer);
@@ -243,4 +257,4 @@
     });
   };
 
-})(window.fj = window.fj || {}, Dom7);
+})(window.fj = window.fj || {}, $);

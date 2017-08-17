@@ -33,8 +33,12 @@ function videoInfoInit(){
     $$(this).toggleClass('newTagSelected');
     let content = $$(this).find('.hiddenTag').text();
     // console.log(content);
-    currPost.tags.push(content);
-    console.log(currPost);
+
+    if (content in currPost.tags) {
+      delete currPost.tags[content];
+    } else {
+      currPost.tags[content] = fj.groupTable[content];
+    }
   });
 }
 
