@@ -11,7 +11,6 @@
     console.log(allTagList);
     let centerX = w/2, centerY = h/2, r = w/2 - 20;
     let angleStepSize = 2 * Math.PI/allTagList.length;
-
     let circle = plot.selectAll('circle')
       .data(allTagList)
       .enter();
@@ -40,7 +39,7 @@
       return a.value.seq - b.value.seq;
     });
     console.log(allSelectedTagList);
-    allSelectedTagList.push(allSelectedTagList[0]);// aim to draw closed path 
+    allSelectedTagList.push(allSelectedTagList[0]);// aim to draw closed path
 
     let line = d3.line()
       .x(function(d) {

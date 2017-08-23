@@ -136,15 +136,12 @@
         $(this).children('.playBtnInTimeline').fadeIn();
       }
     });
-    // $('.playBtnInTimeline').click(function() {
-    //   videoPlayer[0].play();
-    //   $('.playBtnInTimeline').fadeOut();
-    // });
 
-    // $('.videoContainer').find('button').click(function() {
-    //   videoPlayer[0].play();
-    //   // $('.playBtnIcon').fadeOut();
-    // });
+    // Get post timestamp
+    var now = moment();
+    var formattedPostTimestamp = now.format('MM-DD HH:mm A');
+    // console.log(formatted);
+    $('.postTimestamp').append(formattedPostTimestamp);
 
     fj.showViz(post);
   }
