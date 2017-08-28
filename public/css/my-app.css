@@ -29,6 +29,10 @@
   display: none !important;
 }
 
+.videoContainerInJourney video {
+  width: 100%;
+}
+
 /*------------post detail  -----------*/
 .canvas {
   padding-top: 25px;
@@ -37,6 +41,11 @@
 .exploreBtn {
   width: 50%;
   margin: 5% auto;
+}
+
+/*--------------explore----------------*/
+.exploreLegend {
+  padding: 0 5%;
 }
 
 /*------------video section -----------*/

@@ -15,7 +15,7 @@ let currPost;
 let db = new fj.DataBase();
 
 myApp.onPageInit('index', function() {
-
+  fj.renderPostVideoInJourney(currPost);
 });
 
 // Add view
@@ -48,6 +48,10 @@ myApp.onPageInit('videoinfo3', videoInfoInit);
 
 myApp.onPageInit('postDetail',function(){
   fj.renderPostDetail(currPost);
+});
+
+myApp.onPageInit('explore',function(){
+  fj.showExploreViz();
 });
 
 myApp.onPageInit('textfeed', function() {

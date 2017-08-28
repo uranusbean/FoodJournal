@@ -127,6 +127,7 @@
       }
     }
 
+    // Play and pause video
     $('.video').parent().click(function () {
       if($(this).children('.video').get(0).paused){
         $(this).children('.video').get(0).play();
@@ -145,6 +146,33 @@
 
     fj.showViz(post);
   }
+
+
+  // Show videos in Journey page
+  fj.renderPostVideoInJourney = function(post){
+    console.log(post);
+    let videoPlayer = $('.videoContainerInJourney').find('video');
+    if (post.hasVideo) {
+      let superBuffer = new Blob(post.video, {type: 'video/webm'});
+      videoPlayer[0].src = window.URL.createObjectURL(superBuffer);
+      if (post.videoMirrored) {
+        videoPlayer.addClass('mirrored');
+      }
+    }
+
+    // Play and pause video
+    $('.video').parent().click(function () {
+      if($(this).children('.video').get(0).paused){
+        $(this).children('.video').get(0).play();
+        $(this).children('.playBtnInTimeline').fadeOut();
+      }else{
+        $(this).children('.video').get(0).pause();
+        $(this).children('.playBtnInTimeline').fadeIn();
+      }
+    });
+  }
+
+
 
   fj.renderPersonalTimeline = function(canvas, posts) {
     if (!posts || posts.length === 0) {

@@ -43,14 +43,11 @@
             <!-- Toolbar. In Material theme it should be inside of the page-->
             <div class="toolbar toolbar-bottom">
               <div class="toolbar-inner">
-                <!-- Toolbar links -->
                 <a href="index.html" class="link active">Journey</a>
                 <a href="addvideo.html" class="link">
                   <i class="material-icons camera-icon">photo_camera</i>
                 </a>
-                <a href="videoinfo.html" class="link">Explore</a>
-                <!-- <a href="videoinfo.html" class="link">Explore</a> -->
-                <!-- <a href="#" class="link searchTab">Search</a> -->
+                <a href="explore.html" class="link">Explore</a>
               </div>
             </div>
 
@@ -59,8 +56,8 @@
               <div class="content-block-title journeyTimestamp">Aug. 23, 2017</div>
               <div class="content-block">
                 <div class="row">
-                  <div class="col-50">
-                    <img src="img/videoPlaceholder.png" alt="video" style="width: 100%">
+                  <div class="col-50 videoContainerInJourney">
+                    <video class="video"></video>
                   </div>
                   <div class="col-50">
                     <img src="img/videoPlaceholder.png" alt="video" style="width: 100%">
@@ -98,6 +95,7 @@
     <script src="js/video.js"></script>
     <script src="js/db.js"></script>
     <script src="js/viz.js"></script>
+    <script src="js/exploreViz.js"></script>
     <script src="js/my-app.js"></script>
     <!-- <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script> -->
     <!-- <script src="js/lib/ga.js"></script> -->
